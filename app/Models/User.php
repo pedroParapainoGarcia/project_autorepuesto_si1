@@ -13,6 +13,7 @@ use Laravel\Sanctum\HasApiTokens;
 //Agregamos spatie
 use Spatie\Permission\Traits\HasRoles;
 
+use Spatie\Permission\Models\Role;
 
 class User extends Authenticatable
 {
@@ -64,4 +65,11 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+    
+    // public function adminlte_desc(){
+    //     $roles= Role::all();
+    //     return view(compact('roles'));
+       
+    // }
+
 }
