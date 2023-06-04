@@ -11,7 +11,7 @@ use App\Http\Controllers\RepuestoController;
 
 Route::get('', [HomeController::class,'index'])->name('admin.home');//->middleware('can:admin.home')
 
-//Route::resource('usuarios', UserController::class)->only(['index','editar','crear'])->names('admin.user');
+Route::resource('usuarios', UserController::class)->names('admin.usuarios');
 
 Route::resource('roles', RolController::class)->names('admin.roles');
 

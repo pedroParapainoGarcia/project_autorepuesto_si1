@@ -3,49 +3,43 @@
 @section('title', 'Lista de Usuarios')
 
 @section('content_header')
-<h1>Crear Usuarios</h1>
+<h1>Alta de Usuarios</h1>
 @stop
 
 @section('content')
 
-<form action="/usuarios" method="POST">
-    @csrf
-    <div class="mb-3">
-        <label for="" class="form-label">Nombre</label>
-        <input id="name" name="name" type="text" class="form-control" tabindex="1">
-    </div>
-    <div class="mb-3">
-        <label for="" class="form-label">Correo</label>
-        <input id="email" name="email" type="text" class="form-control" tabindex="2">
-    </div>
-    <div class="mb-3">
-        <label for="" class="form-label">Contraseña</label>
-        <input id="password" name="password" type="text" class="form-control" tabindex="3">
-    </div>
-    <div class="mb-3">
-        <label for="" class="form-label">Confirmar Contraseña</label>
-        <input id="password" name="password" type="text" class="form-control" tabindex="3">
-    </div>
-    
-    {{-- asignacion de roles al crear usuarios --}}
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <label for="">Roles</label>
-            {!! Form::select('roles[]', $roles,[], array('class' => 'form-control')) !!}
-        </div>
-    </div>
+<div class="card">
+    <div class="card-body">
+  
+        <div class="card-body">    
 
+            @if ($errors->any())   
+            <div class="alert alert-danger d-flex align-items-center" role="alert">                                                        
+                {{-- <div class="alert alert-dark alert-dismissible fade show" role="alert"> --}}
+                    {{-- <div class="alert alert-danger" role="alert"> --}}
+                <strong>¡ Revise los campos !  </strong>                        
+                    @foreach ($errors->all() as $error)                                    
+                        <span>{{$error}}</span>
+                    @endforeach                        
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+            @endif
 
-    <a href="/usuarios" class="btn btn-secondary" tabindex="5">Cancelar</a>
-    <button type="submit" class="btn btn-primary" tabindex="4">Guardar</button>
+            {!! Form::open(array('route' => 'admin.usuarios.store','method'=>'POST')) !!}
 
+            @include('admin.usuarios.partials.form')
 
-</form>
+            <a href="{{ route('admin.usuarios.index')}}" class="btn btn-secondary" tabindex="5">Cancelar</a>
+                <button type="submit" class="btn btn-primary" tabindex="4">Guardar</button>
+            {!! Form::close() !!}
+            </div>
+  </div>
 @stop
+    @section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+    @stop
 
-@section('css')
-<link rel="stylesheet" href="/css/admin_custom.css">
-@stop
-
-@section('js')
-@stop
+    @section('js')
+    @stop

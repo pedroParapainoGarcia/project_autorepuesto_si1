@@ -309,7 +309,7 @@ return [
         [
             'text' => 'Panel Principal',
             'url'  => 'admin',
-           // 'can'  => 'manage-blog',// metodo can utilizado para permitir ver una vista usando roles
+           'can'  => 'admin.home',// metodo can utilizado para permitir ver una vista usando roles
            'icon'  => 'fas fa-fw fa-home',
            'icon_color' => 'red'
 
@@ -331,14 +331,17 @@ return [
             'text' => 'vista de roles',
             'route'  => 'admin.roles.index',
             'icon' => 'fas fa-users fa-lock',
+            'can'  => 'admin.roles.index',
         ],
         [
             'text'    => 'PAQUETE REGISTROS',
             'icon'    => 'fas fa-solid fa-users',
             'submenu' => [
                 [
-                    // 'text' => 'Gestionar usuarios',
-                    // 'route'  => 'admin.usuarios.index',
+                    'text' => 'Gestionar usuarios',
+                    'route'  => 'admin.usuarios.index',
+                    'icon' => 'fas fa-users fa-lock',
+                    'can'  => 'admin.usuarios.index',
                 ],
                 [
                     'text'    => 'level_one',
