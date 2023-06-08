@@ -7,7 +7,11 @@
 @stop
 
 @section('content')
+
+@can('admin.usuarios.create')
 <a class="btn btn-primary mb-3" href="{{ route('admin.usuarios.create')}}">CREAR</a>
+@endcan
+
 <table id="usuarios" class="table table-striped table-bordered shadow-lg mt-4" style="width:100%">
     <thead class="bg-primary text-white">
         <tr>
@@ -26,23 +30,29 @@
             <td>{{$usuario->email}}</td>
             <td>
                 @if(!empty($usuario->getRoleNames()))
-                    @foreach($usuario->getRoleNames() as $rolNombre)
-                        <h5><span class="badge badge-dark">{{ $rolNombre }}</span></h5>
-                    @endforeach
+                @foreach($usuario->getRoleNames() as $rolNombre)
+                <h5><span class="badge badge-dark">{{ $rolNombre }}</span></h5>
+                @endforeach
                 @endif
             </td>
 
             <td>
+                @can('admin.usuarios.destroy' )
                 <form action="{{ route ('admin.usuarios.destroy',$usuario->id)}}" method="POST">
-
-                    <a href="{{ route('admin.usuarios.edit',$usuario->id)}}" class="btn btn-info">Editar</a>
-
                     @csrf
+
+                    @can('admin.usuarios.edit')
+                    <a href="{{ route('admin.usuarios.edit',$usuario->id)}}" class="btn btn-info">Editar</a>
+                    @endcan
 
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Borrar</button>
                 </form>
+                @endcan
             </td>
+
+
+
         </tr>
         @endforeach
     </tbody>
@@ -61,10 +71,22 @@
 
 <script>
     $(document).ready(function() {
-    $('#usuarios').DataTable({
-        "lengthMenu": [[5,10, 50, -1], [5, 10, 50, "All"]]
-    });
-} );
+    $('#usuarios').DataTable({        
+            responsive: true,
+            autoWidth: false,
+            "language": {
+                "lengthMenu": "Mostrar _MENU_ registros por página",
+                "zeroRecords": "Nada encontrado - disculpa",
+                "info": "Mostrando la página _PAGE_ de _PAGES_",
+                "infoEmpty": "No records available",
+                "infoFiltered": "(filtrando de _MAX_ registros totales)",
+                'search': 'Buscar:',
+                'paginate':{
+                    'next':'Siguiente',
+                    'previous':'Anterior'
+                }
+            }
+        });
+    } );
 </script>
-
 @stop

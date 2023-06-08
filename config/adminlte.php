@@ -300,27 +300,13 @@ return [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
         ],
-
-        // Sidebar items:
-        // [
-        //     'type' => 'sidebar-menu-search',
-        //     'text' => 'search',
-        // ],
         [
-            'text' => 'Panel Principal',
-            'url'  => 'admin',
+           'text' => 'Panel Principal',
+            'route'  => 'admin.home',
            'can'  => 'admin.home',// metodo can utilizado para permitir ver una vista usando roles
            'icon'  => 'fas fa-fw fa-home',
            'icon_color' => 'red'
-
-        ],
-        [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
-        ],
+        ], 
         ['header' => 'PAQUETES'],
         [
             'text' => 'profile',
@@ -328,14 +314,8 @@ return [
             'icon' => 'fas fa-fw fa-user',
         ],
         [
-            'text' => 'vista de roles',
-            'route'  => 'admin.roles.index',
-            'icon' => 'fas fa-users fa-lock',
-            'can'  => 'admin.roles.index',
-        ],
-        [
-            'text'    => 'PAQUETE REGISTROS',
-            'icon'    => 'fas fa-solid fa-users',
+            'text'    => 'Administrar Personal',
+            'icon'        => 'fas fa-id-card',//fab fa-fw fa-buffer'         
             'submenu' => [
                 [
                     'text' => 'Gestionar usuarios',
@@ -343,34 +323,72 @@ return [
                     'icon' => 'fas fa-users fa-lock',
                     'can'  => 'admin.usuarios.index',
                 ],
+                // [
+                //     'text'    => 'level_one',
+                //     'url'     => '#',
+                //     'submenu' => [
+                //         [
+                //             'text' => 'level_two',
+                //             'url'  => '#',
+                //         ],
+                //         [
+                //             'text'    => 'level_two',
+                //             'url'     => '#',
+                //             'submenu' => [
+                //                 [
+                //                     'text' => 'level_three',
+                //                     'url'  => '#',
+                //                 ],
+                //                 [
+                //                     'text' => 'level_three',
+                //                     'url'  => '#',
+                //                 ],
+                //             ],
+                //         ],
+                //     ],
+                // ],
                 [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
+                    'text' => 'Gestionar roles',
+                    'route'  => 'admin.roles.index',
+                    'icon' => 'fas fa-user-lock',
+                    'can'  => 'admin.roles.index',
                 ],
                 [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text' => 'Gestionar Bitacora',
+                    'route'  => 'admin.bitacora.index',
+                    'icon' => 'fab fa-fw fa-buffer',
+                    //'can'  => 'admin.bitacora.index',
                 ],
+
+            ],
+        ],[
+            'text'    => 'Administrar Seguridad',
+            'icon'        => 'fas fa-user-shield',
+            'label'       => 4,
+            'label_color' => 'success',
+            'submenu' => [
+                // [
+                //     'text' => 'Gestionar Bitacora',
+                //     'route'  => 'admin.bitacora.index',
+                //     'icon' => 'fab fa-fw fa-buffer',
+                //     //'can'  => 'admin.bitacora.index',
+                // ],
+               
+            ],
+        ],
+        [
+            'text'    => 'Administrar Inventario',
+            'icon'        => 'fas fa-warehouse',
+            'label'       => 4,
+            'label_color' => 'success',
+            'submenu' => [
+                // [
+                //     'text' => 'Gestionar Bitacora',
+                //     'route'  => 'admin.bitacora.index',
+                //     'icon' => 'fab fa-fw fa-buffer',
+                //     //'can'  => 'admin.bitacora.index',
+                // ],
+               
             ],
         ],
         ['header' => 'labels'],

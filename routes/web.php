@@ -3,9 +3,7 @@
 use Illuminate\Support\Facades\Route;
 //agregamos los siguientes controladores
  
-use App\Http\Controllers\RolController;
-use App\Http\Controllers\UsuarioController;
-use App\Http\Controllers\RepuestoController;
+
 
 /*
 |--------------------------------------------------------------------------

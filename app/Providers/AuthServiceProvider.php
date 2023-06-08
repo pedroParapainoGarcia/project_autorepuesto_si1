@@ -26,8 +26,8 @@ class AuthServiceProvider extends ServiceProvider
 
         //agregamos el usuario Super Admin
         // Otorga implícitamente todos los permisos a la función "Superadministrador"       
-        // Gate::before(function ($user, $ability) {
-        //     return $user->email == 'superadmin@gmail.com' ?? null;
-        // });
+        Gate::before(function ($user, $ability) {
+            return $user->email == 'superadmin@gmail.com' ?? null;
+         });
     }
 }

@@ -8,7 +8,10 @@
 
 @section('content')
 
-<a class="btn btn-primary mb-3" href="{{ route('admin.roles.create')}}" >CREAR</a>
+@can('admin.roles.create')
+<a class="btn btn-primary mb-3" href="{{ route('admin.roles.create')}}">CREAR</a>
+@endcan
+
 <table id="roles" class="table table-striped table-bordered shadow-lg mt-4" style="width:100%">
     <thead class="bg-primary text-white">
         <tr>
@@ -22,17 +25,23 @@
         <tr>
             <td>{{$role->id}}</td>
             <td>{{$role->name}}</td>
-            <td>
-                <form action="{{ route ('admin.roles.destroy',$role)}}" method="POST">                    
-                    {{-- <a href="/admin.roles/{{ $role->id}}/editar" class="btn btn-info">Editar</a> --}}
-                    <a href="{{ route('admin.roles.edit',$role)}}" class="btn btn-info">Editar</a>
-                    
-                    @csrf
 
+            <td>
+                @can('admin.roles.destroy')
+                <form action="{{ route ('admin.roles.destroy',$role->id)}}" method="POST">
+
+
+                    @can('admin.roles.edit')
+                    <a href="{{ route('admin.roles.edit',$role)}}" class="btn btn-info">Editar</a>
+                    @endcan
+                    @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Borrar</button>
                 </form>
+                @endcan
+
             </td>
+
         </tr>
         @endforeach
     </tbody>
@@ -52,7 +61,21 @@
 <script>
     $(document).ready(function() {
     $('#roles').DataTable({
-        "lengthMenu": [[5,10, 50, -1], [5, 10, 50, "All"]]
+        //"lengthMenu": [[5,10, 50, -1], [5, 10, 50, "All"]]
+        responsive: true,
+        autoWidth: false,
+        "language": {
+            "lengthMenu": "Mostrar _MENU_ registros por página",
+            "zeroRecords": "Nada encontrado - disculpa",
+            "info": "Mostrando la página _PAGE_ de _PAGES_",
+            "infoEmpty": "No records available",
+            "infoFiltered": "(filtrando de _MAX_ registros totales)",
+            'search': 'Buscar:',
+            'paginate':{
+                'next':'Siguiente',
+                'previous':'Anterior'
+            }
+        }
     });
 } );
 </script>

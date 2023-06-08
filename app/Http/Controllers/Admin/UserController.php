@@ -2,41 +2,51 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Models\User;
+
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Arr;
+ 
+
 
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+     public function _construct()
+     {
+     
+             $this->middleware('can:admin.usuarios.index')->only('index');
+             $this->middleware('can:admin.usuarios.create')->only('create','store');
+             $this->middleware('can:admin.usuarios.edit')->only('edit','update');           
+             $this->middleware('can:admin.usuarios.destroy')->only('destroy');      
+    
+    
+    }
+
+ 
     public function index()
     {
-      
-
-        $usuarios = User::all();       
+        $usuarios = User::all();
+        $roles = Role::all();  
+        $this->authorize('vistaUserIndex',$roles);     
         return view('admin.usuarios.index',compact('usuarios'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+ 
     public function create()
     {
         $roles=Role::pluck('name','name')->all();
+        $this->authorize('vistaCrearUser',$roles); 
         return view('admin.usuarios.crear',compact('roles'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+  
     public function store(Request $request)
     {
         $this->validate($request,[
@@ -52,23 +62,10 @@ class UserController extends Controller
         $user=User::create($input);
         $user->assignRole($request->input('roles'));
 
-        return redirect()->route('admin.usuarios.index',$user);
-
-      
+        return redirect()->route('admin.usuarios.index',$user);     
         
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit($id)
     {
         $user = User::find($id);
@@ -78,9 +75,7 @@ class UserController extends Controller
         return view('admin.usuarios.editar',compact('user','roles','userRole'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+   
     public function update(Request $request, $id)
     
     {
@@ -107,9 +102,7 @@ class UserController extends Controller
         return redirect()->route('admin.usuarios.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+   
     public function destroy($id)
     {
          User::find($id)->delete();

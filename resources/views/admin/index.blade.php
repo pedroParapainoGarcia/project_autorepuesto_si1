@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-    <p>Welcome chamuxia masarukityaiki.</p>
+    <p>Bienvenidos a la pagina principal</p>
 @stop
 
 @section('css')

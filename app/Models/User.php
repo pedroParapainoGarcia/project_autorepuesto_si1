@@ -13,6 +13,7 @@ use Laravel\Sanctum\HasApiTokens;
 //Agregamos spatie
 use Spatie\Permission\Traits\HasRoles;
 
+
 use Spatie\Permission\Models\Role;
 
 class User extends Authenticatable
