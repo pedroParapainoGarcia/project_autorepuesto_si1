@@ -14,7 +14,7 @@ use Illuminate\Support\Arr;
 
 class RolController extends Controller
 {
-    public function _construct()
+    public function __construct()
     {
         
          $this->middleware('can:admin.roles.index')->only('index');

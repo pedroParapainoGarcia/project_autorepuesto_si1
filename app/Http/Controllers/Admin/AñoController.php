@@ -9,9 +9,13 @@ use App\Models\Año;
 
 class AñoController extends Controller
 {
-    public function __construct(){
-        $this->middleware('auth');
-    }
+    public function __construct()
+    {    
+         $this->middleware('can:admin.años.index')->only('index');
+         $this->middleware('can:admin.años.create')->only('create','store');
+         $this->middleware('can:admin.años.edit')->only('edit','update');           
+         $this->middleware('can:admin.años.destroy')->only('destroy');
+     }
 
     public function index()
     {

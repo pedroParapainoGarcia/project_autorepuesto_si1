@@ -49,12 +49,17 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'admin.categorias.create','description'=>'Crear categoria'])->syncRoles([$role1]);
         Permission::create(['name' => 'admin.categorias.edit','description'=>'Editar datos de categoria'])->syncRoles([$role1]);
         Permission::create(['name' => 'admin.categorias.destroy','description'=>'Eliminar categoria'])->syncRoles([$role1]);
-/*
-        Permission::create(['name' => 'admin.estantes.index','description'=>'Ver Listado de estante'])->syncRoles([$role1]);
-        Permission::create(['name' => 'admin.estantes.create','description'=>'Crear estante'])->syncRoles([$role1]);
-        Permission::create(['name' => 'admin.estantes.edit','description'=>'Editar datos de estante'])->syncRoles([$role1]);
-        Permission::create(['name' => 'admin.estantes.destroy','description'=>'Eliminar estante'])->syncRoles([$role1]);
-*/
+
+        Permission::create(['name' => 'admin.modelos.index','description'=>'Ver Listado de modelo'])->syncRoles([$role1]);
+        Permission::create(['name' => 'admin.modelos.create','description'=>'Crear modelo'])->syncRoles([$role1]);
+        Permission::create(['name' => 'admin.modelos.edit','description'=>'Editar datos de modelo'])->syncRoles([$role1]);
+        Permission::create(['name' => 'admin.modelos.destroy','description'=>'Eliminar modelo'])->syncRoles([$role1]);
+
+        Permission::create(['name' => 'admin.marcas.index','description'=>'Ver Listado de marca'])->syncRoles([$role1]);
+        Permission::create(['name' => 'admin.marcas.create','description'=>'Crear marca'])->syncRoles([$role1]);
+        Permission::create(['name' => 'admin.marcas.edit','description'=>'Editar datos de marca'])->syncRoles([$role1]);
+        Permission::create(['name' => 'admin.marcas.destroy','description'=>'Eliminar marca'])->syncRoles([$role1]);
+
 
 
 

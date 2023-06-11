@@ -13,6 +13,14 @@ use Illuminate\Support\Arr;
 
 class ModeloController extends Controller
 {
+
+    public function __construct()
+    {    
+         $this->middleware('can:admin.modelos.index')->only('index');
+         $this->middleware('can:admin.modelos.create')->only('create','store');
+         $this->middleware('can:admin.modelos.edit')->only('edit','update');           
+         $this->middleware('can:admin.modelos.destroy')->only('destroy');
+     }
   
     public function index()
     {

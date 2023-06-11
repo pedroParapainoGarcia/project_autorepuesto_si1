@@ -8,9 +8,13 @@ use App\Models\Estante;
 
 class EstanteController extends Controller
 {
-    public function __construct(){
-        $this->middleware('auth');
-    }
+    public function __construct()
+    {    
+         $this->middleware('can:admin.estantes.index')->only('index');
+         $this->middleware('can:admin.estantes.create')->only('create','store');
+         $this->middleware('can:admin.estantes.edit')->only('edit','update');           
+         $this->middleware('can:admin.estantes.destroy')->only('destroy');
+     }
 
     public function index()
     {

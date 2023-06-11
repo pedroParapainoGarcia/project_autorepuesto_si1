@@ -400,13 +400,13 @@ return [
                     'text' => 'Gestionar Marcas',
                     'route'  => 'admin.marcas.index',
                     'icon_color' => 'cyan',
-                    //'can'  => 'admin.bitacora.index',
+                    'can'  => 'admin.marcas.index',
                 ],
                 [
                     'text' => 'Gestionar Modelos',
                     'route'  => 'admin.modelos.index',
                     'icon_color' => 'cyan',
-                    //'can'  => 'admin.bitacora.index',
+                    'can'  => 'admin.modelos.index',
                 ],
                 [
                     'text' => 'Gestionar Años Fab.',

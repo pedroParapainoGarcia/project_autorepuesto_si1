@@ -8,9 +8,13 @@ use App\Models\Marca;
 
 class MarcaController extends Controller
 {
-    public function __construct(){
-        $this->middleware('auth');
-    }
+    public function __construct()
+    {    
+         $this->middleware('can:admin.marcas.index')->only('index');
+         $this->middleware('can:admin.marcas.create')->only('create','store');
+         $this->middleware('can:admin.marcas.edit')->only('edit','update');           
+         $this->middleware('can:admin.marcas.destroy')->only('destroy');
+     }
 
     public function index()
     {
