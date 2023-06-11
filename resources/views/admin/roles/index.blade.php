@@ -8,7 +8,7 @@
 
 @section('content')
 
-@can('admin.roles.create')
+@can('admin.roles.crear')
 <a class="btn btn-primary mb-3" href="{{ route('admin.roles.create')}}">CREAR</a>
 @endcan
 

@@ -7,8 +7,10 @@
 @stop
 
 @section('content')
+@can('admin.categorias.create')
+    <a class="btn btn-primary mb-3" href="{{ route('admin.categorias.create')}}">CREAR</a>
+@endcan
 
-<a class="btn btn-primary mb-3" href="{{ route('admin.categorias.create')}}">CREAR</a>
 
 <table id="categorias" class="table table-striped table-bordered shadow-lg mt-4" style="width:100%">
    

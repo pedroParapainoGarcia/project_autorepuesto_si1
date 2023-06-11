@@ -387,14 +387,14 @@ return [
                     'icon_color' => 'cyan',
                     'route'  => 'admin.nombrerepuestos.index',
                     //'icon' => 'fab fa-fw fa-buffer',
-                    //'can'  => 'admin.bitacora.index',
+                    'can'  => 'admin.nombrerepuestos.index',
                 ],
                 [
                     'text' => 'Gestionar Categorias',
                     'icon_color' => 'cyan',
                     'route'  => 'admin.categorias.index',
                     //'icon' => 'fas fa-list',
-                    //'can'  => 'admin.bitacora.index',
+                    'can'  => 'admin.categorias.index',
                 ],
                 [
                     'text' => 'Gestionar Marcas',
@@ -412,13 +412,13 @@ return [
                     'text' => 'Gestionar Años Fab.',
                     'route'  => 'admin.años.index',
                     'icon_color' => 'cyan',
-                    //'can'  => 'admin.bitacora.index',
+                    'can'  => 'admin.años.index',
                 ],
                 [
                     'text' => 'Gestionar Estantes.',
                     'route'  => 'admin.estantes.index',
                     'icon_color' => 'cyan',
-                    //'can'  => 'admin.bitacora.index',
+                    'can'  => 'admin.estantes.index',
                 ],
 
                

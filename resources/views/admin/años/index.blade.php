@@ -8,7 +8,9 @@
 
 @section('content')
 
-<a class="btn btn-primary mb-3" href="{{ route('admin.años.create')}}">CREAR</a>
+@can('admin.años.create')
+    <a class="btn btn-primary mb-3" href="{{ route('admin.años.create')}}">CREAR</a>
+@endcan
 
 <table id="años" class="table table-striped table-bordered shadow-lg mt-4" style="width:100%">
    

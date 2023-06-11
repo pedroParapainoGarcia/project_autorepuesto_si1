@@ -7,8 +7,10 @@
 @stop
 
 @section('content')
-
-<a class="btn btn-primary mb-3" href="{{ route('admin.estantes.create')}}">CREAR</a>
+@can('admin.estantes.create')
+    <a class="btn btn-primary mb-3" href="{{ route('admin.estantes.create')}}">CREAR</a>
+@endcan
+    
 
 <table id="estantes" class="table table-striped table-bordered shadow-lg mt-4" style="width:100%">
 

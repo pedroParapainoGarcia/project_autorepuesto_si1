@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\PruebaController;
 use Illuminate\Support\Facades\Route;
 //agregamos los siguientes controladores
- 
+
 
 
 /*
@@ -25,6 +26,8 @@ Route::get('/', function () {
  Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard',function() {
  return view('dashboard');
 })->name('dashboard'); 
+
+
 
 
 

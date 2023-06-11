@@ -9,7 +9,10 @@ use App\Models\Nombrerepuesto;
 class NombrerepuestoController extends Controller
 {
     public function __construct(){
-        $this->middleware('auth');
+        //$this->middleware('can:admin.nombrerepuestos.index')->only('index');
+        $this->middleware('can:admin.nombrerepuestos.create')->only('create','store');
+        $this->middleware('can:admin.nombrerepuestos.edit')->only('edit','update');           
+        $this->middleware('can:admin.nombrerepuestos.destroy')->only('destroy');      
     }
     /**
      * Display a listing of the resource.

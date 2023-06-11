@@ -82,7 +82,7 @@ class RolController extends Controller
     }
 
 
-    public function update(Request $request,$role)
+    public function update(Request $request,$id)
     {
         // $request->validate([
         //     'name'=>'required'

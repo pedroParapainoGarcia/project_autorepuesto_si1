@@ -8,7 +8,9 @@
 
 @section('content')
 
-<a class="btn btn-primary mb-3" href="{{ route('admin.modelos.create')}}">CREAR</a>
+@can('admin.modelos.create')
+    <a class="btn btn-primary mb-3" href="{{ route('admin.modelos.create')}}">CREAR</a>
+@endcan
 
 <table id="modelos" class="table table-striped table-bordered shadow-lg mt-4" style="width:100%">
 
