@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Marca extends Model
 {
     use HasFactory;
+
+    protected $fillable=[
+        'nombre'=>'required',     
+         
+    ];
+    public function modelos(){
+        return $this->hasMany(Modelo::class,'id');
+    }
 }

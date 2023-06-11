@@ -1,47 +1,37 @@
 @extends('adminlte::page')
 
-@section('title', 'sistema de informacion 1')
+@section('title', 'CRUD con Laravel 8')
 
 @section('content_header')
-<h1>Listado de Roles</h1>
+<h1>Listado de Nombres de Repuestos</h1>
 @stop
 
 @section('content')
+{{-- <a href="{{ route('admin.nombrerepuestos.create')}}" class="btn btn-primary mb-3">CREAR</a> --}}
+<a class="btn btn-primary mb-3" href="{{ route('admin.nombrerepuestos.create')}}">CREAR</a>
 
-@can('admin.roles.create')
-<a class="btn btn-primary mb-3" href="{{ route('admin.roles.create')}}">CREAR</a>
-@endcan
-
-<table id="roles" class="table table-striped table-bordered shadow-lg mt-4" style="width:100%">
+<table id="nombrerepuestos" class="table table-striped table-bordered shadow-lg mt-4" style="width:100%">
+   
     <thead class="bg-primary text-white">
         <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Rol</th>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
             <th scope="col">Acciones</th>
         </tr>
     </thead>
     <tbody>
-        @foreach ($roles as $role)
+        @foreach ($nombrerepuestos as $nombre)
         <tr>
-            <td>{{$role->id}}</td>
-            <td>{{$role->name}}</td>
-
+            <td>{{$nombre->id}}</td>
+            <td>{{$nombre->nombre}}</td>
             <td>
-                @can('admin.roles.destroy')
-                <form action="{{ route ('admin.roles.destroy',$role->id)}}" method="POST">
-
-
-                    @can('admin.roles.edit')
-                    <a href="{{ route('admin.roles.edit',$role->id)}}" class="btn btn-info">Editar</a>
-                    @endcan
+                <form action="{{ route ('admin.nombrerepuestos.destroy',$nombre->id)}}" method="POST">
+                    <a href="{{ route ('admin.nombrerepuestos.edit',$nombre->id)}}" class="btn btn-info">Editar</a>
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Borrar</button>
                 </form>
-                @endcan
-
             </td>
-
         </tr>
         @endforeach
     </tbody>
@@ -60,7 +50,7 @@
 
 <script>
     $(document).ready(function() {
-    $('#roles').DataTable({
+    $('#nombrerepuestos').DataTable({
         //"lengthMenu": [[5,10, 50, -1], [5, 10, 50, "All"]]
         responsive: true,
         autoWidth: false,

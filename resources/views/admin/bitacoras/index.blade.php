@@ -9,7 +9,7 @@
 @section('content')
 
 
-<table id="bitacora" class="table table-striped table-bordered shadow-lg mt-4" style="width:100%">
+<table id="bitacoras" class="table table-striped table-bordered shadow-lg mt-4" style="width:100%">
     <thead class="bg-primary text-white">
         <tr>
             <th scope="col">ID</th>
@@ -22,7 +22,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($bitacora as $row)
+        @foreach ($bitacoras as $row)
         <tr>
             <td>{{$row->id}}</td>
             <td>{{$row->name}}</td>
@@ -51,7 +51,7 @@
 
 <script>
     $(document).ready(function() {
-    $('#bitacora').DataTable({        
+    $('#bitacoras').DataTable({        
             responsive: true,
             autoWidth: false,
             "language": {

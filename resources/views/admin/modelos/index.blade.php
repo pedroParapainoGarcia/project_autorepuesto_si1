@@ -1,45 +1,49 @@
 @extends('adminlte::page')
 
-@section('title', 'sistema de informacion 1')
+@section('title', 'CRUD con Laravel 8')
 
 @section('content_header')
-<h1>Listado de Roles</h1>
+<h1>Listado de Modelos</h1>
 @stop
 
 @section('content')
 
-@can('admin.roles.create')
-<a class="btn btn-primary mb-3" href="{{ route('admin.roles.create')}}">CREAR</a>
-@endcan
+<a class="btn btn-primary mb-3" href="{{ route('admin.modelos.create')}}">CREAR</a>
 
-<table id="roles" class="table table-striped table-bordered shadow-lg mt-4" style="width:100%">
+<table id="modelos" class="table table-striped table-bordered shadow-lg mt-4" style="width:100%">
+
     <thead class="bg-primary text-white">
         <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Rol</th>
+            <th scope="col">ID</th>
+            <th scope="col">Modelo</th>
+            <th scope="col">Marca</th>
             <th scope="col">Acciones</th>
         </tr>
     </thead>
     <tbody>
-        @foreach ($roles as $role)
+        @foreach ($modelos as $modelo)
         <tr>
-            <td>{{$role->id}}</td>
-            <td>{{$role->name}}</td>
+            <td>{{$modelo->id}}</td>
+            <td>{{$modelo->nombre}}</td>
 
             <td>
-                @can('admin.roles.destroy')
-                <form action="{{ route ('admin.roles.destroy',$role->id)}}" method="POST">
+                @foreach($marcas as $marca)
+                    @if($modelo->id_marca == $marca->id)
+                        {{--
+                        <td class="p-3 text-center">{{$marca->nombre}}</td> --}}
+                        <h5><span class="badge badge-dark">{{$marca->nombre}}</span></h5>
+                    @endif
 
+                  @endforeach
+            </td>
 
-                    @can('admin.roles.edit')
-                    <a href="{{ route('admin.roles.edit',$role->id)}}" class="btn btn-info">Editar</a>
-                    @endcan
+            <td>
+                <form action="{{ route ('admin.modelos.destroy',$modelo->id)}}" method="POST">
+                    <a href="{{ route ('admin.modelos.edit',$modelo->id)}}" class="btn btn-info">Editar</a>
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Borrar</button>
                 </form>
-                @endcan
-
             </td>
 
         </tr>
@@ -60,7 +64,7 @@
 
 <script>
     $(document).ready(function() {
-    $('#roles').DataTable({
+    $('#modelos').DataTable({
         //"lengthMenu": [[5,10, 50, -1], [5, 10, 50, "All"]]
         responsive: true,
         autoWidth: false,

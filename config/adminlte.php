@@ -355,7 +355,7 @@ return [
                 ],
                 [
                     'text' => 'Gestionar Bitacora',
-                    'route'  => 'admin.bitacora.index',
+                    'route'  => 'admin.bitacoras.index',
                     'icon' => 'fab fa-fw fa-buffer',
                     //'can'  => 'admin.bitacora.index',
                 ],
@@ -382,12 +382,45 @@ return [
             'label'       => 4,
             'label_color' => 'success',
             'submenu' => [
-                // [
-                //     'text' => 'Gestionar Bitacora',
-                //     'route'  => 'admin.bitacora.index',
-                //     'icon' => 'fab fa-fw fa-buffer',
-                //     //'can'  => 'admin.bitacora.index',
-                // ],
+                [
+                    'text' => 'Gestionar Nombre Repuesto',
+                    'icon_color' => 'cyan',
+                    'route'  => 'admin.nombrerepuestos.index',
+                    //'icon' => 'fab fa-fw fa-buffer',
+                    //'can'  => 'admin.bitacora.index',
+                ],
+                [
+                    'text' => 'Gestionar Categorias',
+                    'icon_color' => 'cyan',
+                    'route'  => 'admin.categorias.index',
+                    //'icon' => 'fas fa-list',
+                    //'can'  => 'admin.bitacora.index',
+                ],
+                [
+                    'text' => 'Gestionar Marcas',
+                    'route'  => 'admin.marcas.index',
+                    'icon_color' => 'cyan',
+                    //'can'  => 'admin.bitacora.index',
+                ],
+                [
+                    'text' => 'Gestionar Modelos',
+                    'route'  => 'admin.modelos.index',
+                    'icon_color' => 'cyan',
+                    //'can'  => 'admin.bitacora.index',
+                ],
+                [
+                    'text' => 'Gestionar Años Fab.',
+                    'route'  => 'admin.años.index',
+                    'icon_color' => 'cyan',
+                    //'can'  => 'admin.bitacora.index',
+                ],
+                [
+                    'text' => 'Gestionar Estantes.',
+                    'route'  => 'admin.estantes.index',
+                    'icon_color' => 'cyan',
+                    //'can'  => 'admin.bitacora.index',
+                ],
+
                
             ],
         ],

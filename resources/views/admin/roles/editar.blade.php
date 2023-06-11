@@ -20,7 +20,7 @@
 </div>
 @stop --}}
 
-<form action="/admin.roles/{{$role}}" method="POST">
+<form action="{{ route ('admin.roles.update',$role->id)}}" method="POST">
   @csrf
   @method('PUT')
   <div class="mb-3">
@@ -29,7 +29,7 @@
   </div>
 
 
-  <h2 class="h3">Lista de Permisos</h2>
+  {{-- <h2 class="h3">Permisos para este Rol:</h2>
   @foreach ($permissions as $permission)
   <div>
     <label>
@@ -38,7 +38,17 @@
 
     </label>
   </div>
-  @endforeach
+  @endforeach --}}
+
+  <div class="form-group">
+    <label for="">Permisos para este Rol:</label>
+    <br/>
+    @foreach($permission as $value)
+        <label>{{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, array('class' => 'name')) }}
+        {{ $value->description }}</label>
+    <br/>
+    @endforeach
+</div>
 
   <a href="{{route('admin.roles.index')}}" class="btn btn-secondary">Cancelar</a>
   <button type="submit" class="btn btn-primary">Guardar</button>

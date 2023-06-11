@@ -61,26 +61,48 @@ class RolController extends Controller
 
     }
 
-    public function edit(Role $role)
+    public function edit($id)
     {
         
-        $permissions= Permission::all();
+        // $permissions= Permission::all();
        
-        $this->authorize('vistaEditarRol',$permissions);
+        // $this->authorize('vistaEditarRol',$permissions);
 
-        return view('admin.roles.editar',compact('role','permissions'));
+        // return view('admin.roles.editar',compact('role','permissions'));
         
+        $role = Role::find($id);
+        $permission = Permission::get();
+        $rolePermissions = DB::table("role_has_permissions")->where("role_has_permissions.role_id",$id)
+            ->pluck('role_has_permissions.permission_id','role_has_permissions.permission_id')
+            ->all();
+    
+        return view('admin.roles.editar',compact('role','permission','rolePermissions'));
+    
+    
     }
 
 
-    public function update(Request $request, Role $role)
+    public function update(Request $request,$role)
     {
-        $request->validate([
-            'name'=>'required'
-        ]); 
-        $role->update($request->all());
-        $role->permissions()->sync($request->permissions);
-        return redirect()->route('admin.roles.index',$role);
+        // $request->validate([
+        //     'name'=>'required'
+        // ]); 
+        // $role->update($request->all());
+        // $role->permissions()->sync($request->permissions);
+        // return redirect()->route('admin.roles.index',$role);
+
+        $this->validate($request, [
+            'name' => 'required',
+            'permission' => 'required',
+        ]);
+    
+        $role = Role::find($id);
+        $role->name = $request->input('name');
+        $role->save();
+    
+        $role->syncPermissions($request->input('permission'));
+    
+        return redirect()->route('admin.roles.index');  
 
     }
 
@@ -90,6 +112,6 @@ class RolController extends Controller
         // $role->delete();
         // return redirect()->route('admin.roles.index',$role);
         DB::table("roles")->where('id',$id)->delete();
-        return redirect()->route('roles.index'); 
+        return redirect()->route('admin.roles.index'); 
     }
 }

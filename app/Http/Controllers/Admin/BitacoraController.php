@@ -11,7 +11,7 @@ use App\Models\Bitacora;
 class BitacoraController extends Controller
 {
     public function index(){
-        $bitacora=Bitacora::all();
-        return view('admin.bitacora.index',compact('bitacora'));
+        $bitacoras=Bitacora::all();
+        return view('admin.bitacoras.index',compact('bitacoras'));
     }
 }

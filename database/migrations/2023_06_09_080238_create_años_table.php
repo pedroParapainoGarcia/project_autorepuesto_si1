@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('nombrerepuestos', function (Blueprint $table) {
+        Schema::create('años', function (Blueprint $table) {
             $table->id();
-            $table->string('nombrerepuesto',45);
+            $table->year('añofabrica');
             $table->timestamps();
         });
     }
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('nombrerepuestos');
+        Schema::dropIfExists('años');
     }
 };
