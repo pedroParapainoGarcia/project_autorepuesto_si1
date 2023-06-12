@@ -6,6 +6,16 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Marca;
 
+use App\Models\Bitacora;
+use  App\Http\Controllers\Admin\BitacoraController;
+use App\Models\User;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
+
+
 class MarcaController extends Controller
 {
     public function __construct()
@@ -22,17 +32,13 @@ class MarcaController extends Controller
         return view('admin.marcas.index',compact('marcas'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
         return view('admin.marcas.crear');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(Request $request)
     {
         $this->validate(request(),[
@@ -41,52 +47,70 @@ class MarcaController extends Controller
         $marcas = new Marca();
 
         $marcas->nombre = $request->get('nombre');
-
         $marcas->save();
 
-        return redirect()->route('admin.marcas.index');
+        $bitacora = new Bitacora();   
+        $id = Auth::id();       
+        $bitacora->causer_id = $id ;
+        $bitacora->name = Role::find($id)->name;
+        $bitacora->long_name = 'Marca';
+        $bitacora->descripcion = 'Registró';
+        $bitacora->subject_id = $marcas->id;        
+        $bitacora->save();
 
-        // $marca=Marca::create($request->all());
-        // return redirect()->route('admin.marcas.index');
+       
+
+        return redirect()->route('admin.marcas.index');
+;
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
     public function edit(string $id)
     {
         $marcas = Marca::find($id);
         return view('admin.marcas.editar')->with('marcas',$marcas);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(Request $request, string $id)
     {
         $marcas = Marca::find($id);
 
-        $marcas->nombre = $request->get('nombre');   
+        $marcas->nombre = $request->get('nombre'); 
 
         $marcas->save();
+
+        $bitacora = new Bitacora();   
+        $id = Auth::id();       
+        $bitacora->causer_id = $id ;
+        $bitacora->name = Role::find($id)->name;
+        $bitacora->long_name = 'Marca';
+        $bitacora->descripcion = 'Actualizó';
+        $bitacora->subject_id = $marcas->id;        
+        $bitacora->save();
        
         return redirect()->route('admin.marcas.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(string $id)
     {
         $marcas = Marca::find($id);
+
+        $bitacora = new Bitacora();   
+        $id = Auth::id();       
+        $bitacora->causer_id = $id ;
+        $bitacora->name = Role::find($id)->name;
+        $bitacora->long_name = 'Marca';
+        $bitacora->descripcion = 'Eliminó';
+        $bitacora->subject_id = $marcas->id;        
+        $bitacora->save();
+
         $marcas->delete();
         return redirect()->route('admin.marcas.index');
     }

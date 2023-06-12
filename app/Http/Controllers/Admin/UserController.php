@@ -12,8 +12,10 @@ use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Arr;
- 
+use Illuminate\Support\Facades\Auth;
 
+use App\Models\Bitacora;
+use  App\Http\Controllers\Admin\BitacoraController;
 
 
 class UserController extends Controller
@@ -62,6 +64,15 @@ class UserController extends Controller
         $user=User::create($input);
         $user->assignRole($request->input('roles'));
 
+        $bitacora = new Bitacora();   
+        $id = Auth::id();       
+        $bitacora->causer_id = $id ;
+        $bitacora->name = Role::find($id)->name;
+        $bitacora->long_name = 'Usuarios';
+        $bitacora->descripcion = 'Registró';
+        $bitacora->subject_id = $user->id;        
+        $bitacora->save();
+
         return redirect()->route('admin.usuarios.index',$user);     
         
     }
@@ -98,6 +109,15 @@ class UserController extends Controller
         DB::table('model_has_roles')->where('model_id',$id)->delete();
     
         $user->assignRole($request->input('roles'));
+
+        $bitacora = new Bitacora();   
+        $id = Auth::id();       
+        $bitacora->causer_id = $id ;
+        $bitacora->name = Role::find($id)->name;
+        $bitacora->long_name = 'Usuarios';
+        $bitacora->descripcion = 'Actualizó';
+        $bitacora->subject_id = $user->id;        
+        $bitacora->save();
     
         return redirect()->route('admin.usuarios.index');
     }
@@ -105,10 +125,20 @@ class UserController extends Controller
    
     public function destroy($id)
     {
-         User::find($id)->delete();
+        $usuario =User::find($id);
+
+        $bitacora = new Bitacora();   
+        $id = Auth::id();       
+        $bitacora->causer_id = $id ;
+        $bitacora->name = Role::find($id)->name;
+        $bitacora->long_name = 'Usuarios';
+        $bitacora->descripcion = 'Eliminó';
+        $bitacora->subject_id = $usuario->id;        
+        $bitacora->save();
+
+        $usuario->delete();
          return redirect()->route('admin.usuarios.index');
 
-        // $usuario->delete();
-        // return redirect()->route('admin.roles.index',$usuario);
+         
     }
 }

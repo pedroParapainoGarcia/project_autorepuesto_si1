@@ -6,6 +6,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Año;
 
+use App\Models\Bitacora;
+use  App\Http\Controllers\Admin\BitacoraController;
+
+use App\Http\Controllers\Admin\RolController; 
+use App\Http\Controllers\Admin\UserController;
+use App\Models\User;
+use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Auth;
 
 class AñoController extends Controller
 {
@@ -38,6 +46,15 @@ class AñoController extends Controller
 
         $años->save();
 
+        $bitacora = new Bitacora();   
+        $id = Auth::id();       
+        $bitacora->causer_id = $id ;
+        $bitacora->name = Role::find($id)->name;
+        $bitacora->long_name = 'Año';
+        $bitacora->descripcion = 'Registró';
+        $bitacora->subject_id = $años->id;        
+        $bitacora->save();
+
         return redirect()->route('admin.años.index');
     }
 
@@ -47,35 +64,48 @@ class AñoController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+  
     public function edit(string $id)
     {
        $años = Año::find($id);
         return view('admin.años.editar')->with('años',$años);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+  
     public function update(Request $request, string $id)
     {
         $años = Año::find($id);
 
         $años->añofabrica = $request->get('añofabrica');   
-
+        
         $años->save();
-       
+
+        $bitacora = new Bitacora();   
+        $id = Auth::id();       
+        $bitacora->causer_id = $id ;
+        $bitacora->name = Role::find($id)->name;
+        $bitacora->long_name = 'Año';
+        $bitacora->descripcion = 'Actualizó';
+        $bitacora->subject_id = $años->id;        
+        $bitacora->save();
+
         return redirect()->route('admin.años.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+ 
     public function destroy(string $id)
     {
         $años = Año::find($id);
+
+        $bitacora = new Bitacora();   
+        $id = Auth::id();       
+        $bitacora->causer_id = $id ;
+        $bitacora->name = Role::find($id)->name;
+        $bitacora->long_name = 'Año';
+        $bitacora->descripcion = 'Eliminó';
+        $bitacora->subject_id = $años->id;        
+        $bitacora->save();
+
         $años->delete();
         return redirect()->route('admin.años.index');
     }

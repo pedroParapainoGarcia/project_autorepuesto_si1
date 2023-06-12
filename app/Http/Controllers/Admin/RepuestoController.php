@@ -13,6 +13,13 @@ use App\Models\Marca;
 use App\Models\Modelo;
 use App\Models\Nombrerepuesto;
 use App\Models\Repuesto;
+use Illuminate\Support\Facades\Auth;
+
+use  App\Http\Controllers\Admin\BitacoraController;
+use App\Http\Controllers\Admin\RolController; 
+use App\Http\Controllers\Admin\UserController;
+use App\Models\User;
+use Spatie\Permission\Models\Role;
 
 class RepuestoController extends Controller
 {
@@ -73,6 +80,15 @@ class RepuestoController extends Controller
             $repuesto->id_año = $request->get('id_año');
             $repuesto->id_estantes = $request->get('id_estantes');
             $repuesto->save();
+
+            $bitacora = new Bitacora();   
+            $id = Auth::id();       
+            $bitacora->causer_id = $id ;
+            $bitacora->name = Role::find($id)->name;
+            $bitacora->long_name = 'Repuestos';
+            $bitacora->descripcion = 'Registró';
+            $bitacora->subject_id = $repuesto->id;        
+            $bitacora->save();
         
          return redirect()->route('admin.repuestos.index');
     }
@@ -114,6 +130,15 @@ class RepuestoController extends Controller
         $repuesto->update($input);
 
         $repuesto->save();
+
+        $bitacora = new Bitacora();   
+        $id = Auth::id();       
+        $bitacora->causer_id = $id ;
+        $bitacora->name = Role::find($id)->name;
+        $bitacora->long_name = 'Repuestos';
+        $bitacora->descripcion = 'Actualizó';
+        $bitacora->subject_id = $repuesto->id;        
+        $bitacora->save();
     
         return redirect()->route('admin.repuestos.index');
     }
@@ -121,7 +146,18 @@ class RepuestoController extends Controller
 
     public function destroy($id) 
     {
-        Repuesto::find($id)->delete();
+        $repuesto =Repuesto::find($id);
+
+        $bitacora = new Bitacora();   
+        $id = Auth::id();       
+        $bitacora->causer_id = $id ;
+        $bitacora->name = Role::find($id)->name;
+        $bitacora->long_name = 'Repuestos';
+        $bitacora->descripcion = 'Eliminó';
+        $bitacora->subject_id = $repuesto->id;        
+        $bitacora->save();
+
+        $repuesto->delete();
         return redirect()->route('admin.repuestos.index');
     }
 }

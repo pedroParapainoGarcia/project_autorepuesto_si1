@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 use App\Models\Modelo;
 use App\Models\Marca;
 
+use App\Models\Bitacora;
+use  App\Http\Controllers\Admin\BitacoraController;
+use App\Http\Controllers\Admin\RolController; 
+use App\Http\Controllers\Admin\UserController;
+use App\Models\User;
+use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Arr;
@@ -48,6 +55,15 @@ class ModeloController extends Controller
             $modelo->nombre = $request->get('nombre');
             $modelo->id_marca = $request->get('id_marca');
             $modelo->save();
+
+            $bitacora = new Bitacora();   
+            $id = Auth::id();       
+            $bitacora->causer_id = $id ;
+            $bitacora->name = Role::find($id)->name;
+            $bitacora->long_name = 'Modelos';
+            $bitacora->descripcion = 'Registró';
+            $bitacora->subject_id = $modelo->id;        
+            $bitacora->save();
         
          return redirect()->route('admin.modelos.index');
    
@@ -69,9 +85,6 @@ class ModeloController extends Controller
 
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request,$id)
     {
         $this->validate(request(), [
@@ -84,6 +97,15 @@ class ModeloController extends Controller
         $modelo->update($input);
 
         $modelo->save();
+
+        $bitacora = new Bitacora();   
+        $id = Auth::id();       
+        $bitacora->causer_id = $id ;
+        $bitacora->name = Role::find($id)->name;
+        $bitacora->long_name = 'Modelos';
+        $bitacora->descripcion = 'Actualizó';
+        $bitacora->subject_id = $modelo->id;        
+        $bitacora->save();
     
         return redirect()->route('admin.modelos.index');
 
@@ -92,7 +114,18 @@ class ModeloController extends Controller
 
     public function destroy(string $id)
     {
-        Modelo::find($id)->delete();
+        $modelo =Modelo::find($id);
+
+        $bitacora = new Bitacora();   
+        $id = Auth::id();       
+        $bitacora->causer_id = $id ;
+        $bitacora->name = Role::find($id)->name;
+        $bitacora->long_name = 'Modelos';
+        $bitacora->descripcion = 'Eliminó';
+        $bitacora->subject_id = $modelo->id;        
+        $bitacora->save();
+
+        $modelo->delete();
         return redirect()->route('admin.modelos.index');
 
 

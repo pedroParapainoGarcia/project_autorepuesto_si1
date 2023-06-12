@@ -6,6 +6,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Estante;
 
+use App\Models\Bitacora;
+use  App\Http\Controllers\Admin\BitacoraController;
+use App\Http\Controllers\Admin\RolController; 
+use App\Http\Controllers\Admin\UserController;
+use App\Models\User;
+use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Auth;
 class EstanteController extends Controller
 {
     public function __construct()
@@ -22,17 +29,12 @@ class EstanteController extends Controller
         return view('admin.estantes.index')->with('estantes',$estantes);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+ 
     public function create()
     {
         return view('admin.estantes.crear');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $estantes = new Estante();
@@ -42,31 +44,35 @@ class EstanteController extends Controller
 
         $estantes->save();
 
+        $bitacora = new Bitacora();   
+        $id = Auth::id();       
+        $bitacora->causer_id = $id ;
+        $bitacora->name = Role::find($id)->name;
+        $bitacora->long_name = 'Estantes';
+        $bitacora->descripcion = 'Registró';
+        $bitacora->subject_id = $estantes->id;        
+        $bitacora->save();
+
+
         return redirect()->route('admin.estantes.index');
 
 
     }
 
-    /**
-     * Display the specified resource.
-     */
+
     public function show(string $id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
     public function edit(string $id)
     {
         $estantes = Estante::find($id);
         return view('admin.estantes.editar')->with('estantes',$estantes);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(Request $request, string $id)
     {
         $estantes = Estante::find($id);  
@@ -75,18 +81,35 @@ class EstanteController extends Controller
         $estantes->capacidad = $request->get('capacidad');
 
         $estantes->save();
+
+        $bitacora = new Bitacora();   
+        $id = Auth::id();       
+        $bitacora->causer_id = $id ;
+        $bitacora->name = Role::find($id)->name;
+        $bitacora->long_name = 'Estantes';
+        $bitacora->descripcion = 'Actualizó';
+        $bitacora->subject_id = $estantes->id;        
+        $bitacora->save();
        
         return redirect()->route('admin.estantes.index');
 
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(string $id)
     {
         $estantes = Estante::find($id);
+
+        $bitacora = new Bitacora();   
+        $id = Auth::id();       
+        $bitacora->causer_id = $id ;
+        $bitacora->name = Role::find($id)->name;
+        $bitacora->long_name = 'Estantes';
+        $bitacora->descripcion = 'Eliminó';
+        $bitacora->subject_id = $estantes->id;        
+        $bitacora->save();
+
         $estantes->delete();
         return redirect()->route('admin.estantes.index');
     }

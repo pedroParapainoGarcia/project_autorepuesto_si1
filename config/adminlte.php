@@ -253,7 +253,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'admin',//admin es el nombre de la ruta de la vista principal
+    'dashboard_url' => 'admin.home',//admin es el nombre de la ruta de la vista principal
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -310,7 +310,8 @@ return [
         ['header' => 'PAQUETES'],
         [
             'text' => 'profile',
-            'url'  => 'admin/settings',
+            // 'url'  => 'admin/settings',
+            'url'  => 'user/profile',
             'icon' => 'fas fa-fw fa-user',
         ],
         [

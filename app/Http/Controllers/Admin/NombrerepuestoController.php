@@ -6,6 +6,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Nombrerepuesto;
 
+use App\Models\Bitacora;
+use  App\Http\Controllers\Admin\BitacoraController;
+use App\Http\Controllers\Admin\RolController; 
+use App\Http\Controllers\Admin\UserController;
+use App\Models\User;
+use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Auth;
 class NombrerepuestoController extends Controller
 {
     public function __construct(){
@@ -14,26 +21,20 @@ class NombrerepuestoController extends Controller
         $this->middleware('can:admin.nombrerepuestos.edit')->only('edit','update');           
         $this->middleware('can:admin.nombrerepuestos.destroy')->only('destroy');      
     }
-    /**
-     * Display a listing of the resource.
-     */
+ 
     public function index()
     {
         $nombrerepuestos = Nombrerepuesto::all();
         return view('admin.nombrerepuestos.index')->with('nombrerepuestos',$nombrerepuestos);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+ 
     public function create()
     {
         return view('admin.nombrerepuestos.crear');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(Request $request)
     {
         $nombrerepuestos = new Nombrerepuesto();
@@ -42,30 +43,33 @@ class NombrerepuestoController extends Controller
 
         $nombrerepuestos->save();
 
+        $bitacora = new Bitacora();   
+        $id = Auth::id();       
+        $bitacora->causer_id = $id ;
+        $bitacora->name = Role::find($id)->name;
+        $bitacora->long_name = 'Nombre Repuestos';
+        $bitacora->descripcion = 'Registró';
+        $bitacora->subject_id = $nombrerepuestos->id;        
+        $bitacora->save();
+
         return redirect()->route('admin.nombrerepuestos.index');
        
     }
 
-    /**
-     * Display the specified resource.
-     */
+  
     public function show(string $id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+ 
     public function edit(string $id)
     {
         $nombrerepuestos = Nombrerepuesto::find($id);
         return view('admin.nombrerepuestos.editar')->with('nombrerepuestos',$nombrerepuestos);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(Request $request, string $id)
     {
         $nombrerepuestos = Nombrerepuesto::find($id);
@@ -73,17 +77,34 @@ class NombrerepuestoController extends Controller
         $nombrerepuestos->nombre = $request->get('nombre');   
 
         $nombrerepuestos->save();
+
+        $bitacora = new Bitacora();   
+        $id = Auth::id();       
+        $bitacora->causer_id = $id ;
+        $bitacora->name = Role::find($id)->name;
+        $bitacora->long_name = 'Nombre Repuestos';
+        $bitacora->descripcion = 'Actualizó';
+        $bitacora->subject_id = $nombrerepuestos->id;        
+        $bitacora->save();
        
         return redirect()->route('admin.nombrerepuestos.index');
        
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+  
     public function destroy(string $id)
     {
         $nombrerepuestos = Nombrerepuesto::find($id);
+
+        $bitacora = new Bitacora();   
+        $id = Auth::id();       
+        $bitacora->causer_id = $id ;
+        $bitacora->name = Role::find($id)->name;
+        $bitacora->long_name = 'Nombre Repuestos';
+        $bitacora->descripcion = 'Eliminó';
+        $bitacora->subject_id = $nombrerepuestos->id;        
+        $bitacora->save();
+
         $nombrerepuestos->delete();
         return redirect()->route('admin.nombrerepuestos.index');
     }

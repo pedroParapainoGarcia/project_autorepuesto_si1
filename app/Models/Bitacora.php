@@ -14,7 +14,6 @@ class Bitacora extends Model
         'long_name',
         'descripcion',
         'subject_id'
-
     ];
     use HasFactory;
 }

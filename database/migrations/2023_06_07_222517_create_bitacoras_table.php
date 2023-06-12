@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+//use Illuminate\Support\Facades\Schema;
 
 class CreateBitacorasTable extends Migration
 {
@@ -13,12 +13,12 @@ class CreateBitacorasTable extends Migration
     {
         Schema::create('bitacoras', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->string('causer_id')->nullable();
-            $table->string('long_name')->nullable();
+            $table->string('name');
+            $table->string('causer_id');
+            $table->string('long_name');
             $table->string('descripcion');
-            $table->string('subject_id')->nullable();
-            $table->timestamps();
+            $table->string('subject_id');
+            $table->timestamps(); 
         });
     }
 
