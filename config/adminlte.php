@@ -420,6 +420,12 @@ return [
                     'icon_color' => 'cyan',
                     'can'  => 'admin.estantes.index',
                 ],
+                [
+                    'text' => 'Gestionar Inventario',
+                    'route'  => 'admin.repuestos.index',
+                    'icon_color' => 'cyan',
+                    'can'  => 'admin.repuestos.index',
+                ],
 
                
             ],

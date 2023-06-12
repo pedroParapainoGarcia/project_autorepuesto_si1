@@ -16,25 +16,21 @@
     <input id="nombre" name="nombre" type="text" class="form-control" value="{{$modelo->nombre}}">
   </div>
 
-  <div class="col-xs-12 col-sm-12 col-md-12">
+
+  <div class="mb-3">
+   
     <div class="form-group">
-      <label for="">Marca</label>
-      <select name=id_marca id=id_marca class="form-control">
-         {{-- <option value="">    Seleccione una Marca   </option> --}}
-
-          @foreach($marca as $marc)
-          <option value="{{$marc['id']}}">{{$marc['nombre']}}</option>
-
-          @endforeach
-          
-      </select>
-        
-    
+        {{-- <label for="">Marcas</label> --}}
+        {{ Form::label ('Marcas')}}
+        {{Form::select('id_marca',$marca,$modelo->id_marca,['class' => 'form-control' .($errors->has('id_marca') ? ' is-invalid' : ''), 'placeholder'=>'Seleccione una Marca']) }}
+        {!! $errors->first('id_marca', '<div class="invalid-feedback">:message</div>')!!}
     </div>
 </div>
+  
 
-  <a href="{{ route('admin.modelos.index')}}" class="btn btn-secondary" tabindex="3">Cancelar</a>
-  <button type="submit" class="btn btn-primary">Guardar</button>
+
+<a href="{{ route('admin.modelos.index')}}" class="btn btn-secondary" tabindex="3">Cancelar</a>
+<button type="submit" class="btn btn-primary" tabindex="4">Actualizar</button>
 </form>
 @stop
 

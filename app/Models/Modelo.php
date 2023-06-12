@@ -14,12 +14,12 @@ class Modelo extends Model
     ];
 
  
-
+ //relacion uno a muchos marca-modelo (inversa)
     public function marcas(){
         return $this->belongsTo(Marca::class,'id_marca');
     }
 
-
+//relacion uno a muchos modelo-repuesto
     public function repuestos(){
         return $this->hasMany(Repuesto::class,'id');
     }

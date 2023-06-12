@@ -12,7 +12,7 @@
    @method('PUT')
  
   <div class="mb-3">
-    <label for="" class="form-label">Nombre</label>
+    <label for="" class="form-label">Nombre Categoria</label>
     <input autocomplete="off"  id="nombre" name="nombre" type="text" class="form-control" value="{{$categorias->nombre}}">
   </div>
   

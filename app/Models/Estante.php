@@ -9,6 +9,7 @@ class Estante extends Model
 {
     use HasFactory;
 
+    //relacion uno a muchos estantes-repuestos
     public function repuestos(){
         return $this->hasMany(Repuesto::class,'id');
     }

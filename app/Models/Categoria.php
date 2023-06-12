@@ -9,6 +9,7 @@ class Categoria extends Model
 {
     use HasFactory;
 
+    //relacion uno a muchos categoria-repuestos
     public function repuestos(){
         return $this->hasMany(Repuesto::class,'id');
     }

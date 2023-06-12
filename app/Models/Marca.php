@@ -13,6 +13,8 @@ class Marca extends Model
         'nombre'=>'required',     
          
     ];
+
+    //relacion uno a muchos marca-modelo
     public function modelos(){
         return $this->hasMany(Modelo::class,'id');
     }

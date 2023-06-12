@@ -12,6 +12,7 @@ use  App\Http\Controllers\Admin\MarcaController;
 use  App\Http\Controllers\Admin\AñoController;
 use  App\Http\Controllers\Admin\EstanteController;
 use  App\Http\Controllers\Admin\ModeloController;
+use  App\Http\Controllers\Admin\RepuestoController;
 
 
 
@@ -27,13 +28,17 @@ Route::get('', [HomeController::class,'index'])->middleware('can:admin.home')->n
 
  Route::resource('categorias', CategoriaController::class)->names('admin.categorias');
 
- Route::resource('marcas', MarcaController::class)->names('admin.marcas');
+ Route::resource('marcas', MarcaController::class)->names('admin.marcas'); 
 
- Route::resource('años', AñoController::class)->names('admin.años');
+Route::resource('modelos', ModeloController::class)->names('admin.modelos');
 
- Route::resource('estantes', EstanteController::class)->names('admin.estantes');
+Route::resource('años', AñoController::class)->names('admin.años');
 
- Route::resource('modelos', ModeloController::class)->names('admin.modelos');
+Route::resource('estantes', EstanteController::class)->names('admin.estantes');
+
+Route::resource('repuestos', RepuestoController::class)->names('admin.repuestos');
+
+ 
 
 //y creamos un grupo de rutas protegidas para los controladores
 //  Route::group(['middleware' => ['auth']], function() {

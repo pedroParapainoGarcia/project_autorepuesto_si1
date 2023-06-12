@@ -19,7 +19,7 @@ class MarcaController extends Controller
     public function index()
     {
         $marcas = Marca::all();
-        return view('admin.marcas.index',compat('marcas'));
+        return view('admin.marcas.index',compact('marcas'));
     }
 
     /**
@@ -38,16 +38,16 @@ class MarcaController extends Controller
         $this->validate(request(),[
             'nombre'=>'required',
 ]);
-        // $marcas = new Marca();
+        $marcas = new Marca();
 
-        // $marcas->nombre = $request->get('nombre');
+        $marcas->nombre = $request->get('nombre');
 
-        // $marcas->save();
+        $marcas->save();
 
-        // return redirect()->route('admin.marcas.index');
-
-        $marca=Marca::create($request->all());
         return redirect()->route('admin.marcas.index');
+
+        // $marca=Marca::create($request->all());
+        // return redirect()->route('admin.marcas.index');
     }
 
     /**

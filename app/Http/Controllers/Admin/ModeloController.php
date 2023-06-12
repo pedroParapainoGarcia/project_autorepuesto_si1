@@ -25,7 +25,7 @@ class ModeloController extends Controller
     public function index()
     {
         $modelos = Modelo::all();
-        $marcas= Marca::all();   
+        $marcas = Marca::all();         
         return view('admin.modelos.index',compact('modelos','marcas'));
     }
 
@@ -42,15 +42,15 @@ class ModeloController extends Controller
         $this->validate(request(),[
             'nombre'=>'required',            
             'id_marca'=>'required']);
-        $model = Modelo::create(request(['nombre','id_marca']));
 
-        $model->save();
+            $modelo = new Modelo();
+
+            $modelo->nombre = $request->get('nombre');
+            $modelo->id_marca = $request->get('id_marca');
+            $modelo->save();
         
          return redirect()->route('admin.modelos.index');
-      
-        // request()->validate(Modelo::$rules);
-        // $modelo = Modelo::create($request->all());
-        // return redirect()->route('admin.modelos.index');
+   
      
     }
 
@@ -63,9 +63,8 @@ class ModeloController extends Controller
    
     public function edit($id)
     {
-        $modelo = Modelo::find($id);
-        $marca = Marca::all();        
-    
+        $modelo = Modelo::find($id);        
+        $marca= Marca::pluck('nombre','id');
         return view('admin.modelos.editar',compact('modelo','marca'));
 
     }
@@ -79,11 +78,10 @@ class ModeloController extends Controller
             'nombre' => 'required',
             'id_marca' => 'required'
         ]);
-         
-    
+            
+        $input = $request->all();
         $modelo = Modelo::find($id);
-        $modelo->nombre = $request->nombre;
-        $modelo->id_marca = $request->id_marca;
+        $modelo->update($input);
 
         $modelo->save();
     
