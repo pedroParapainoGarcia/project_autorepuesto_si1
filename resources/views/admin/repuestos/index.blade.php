@@ -9,7 +9,7 @@
 @section('content')
 
 @can('admin.repuestos.create')
-<a class="btn btn-primary mb-3" href="{{ route('admin.repuestos.create')}}">CREAR</a>
+    <a class="btn btn-primary mb-3" href="{{ route('admin.repuestos.create')}}">CREAR</a>
 @endcan
 
 <table id="repuestos" class="table table-striped table-bordered shadow-lg mt-4" style="width:100%">

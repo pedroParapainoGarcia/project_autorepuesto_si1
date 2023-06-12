@@ -60,6 +60,11 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'admin.marcas.edit','description'=>'Editar datos de marca'])->syncRoles([$role1]);
         Permission::create(['name' => 'admin.marcas.destroy','description'=>'Eliminar marca'])->syncRoles([$role1]);
 
+        Permission::create(['name' => 'admin.repuestos.index','description'=>'Ver Listado de repuesto'])->syncRoles([$role1]);
+        Permission::create(['name' => 'admin.repuestos.create','description'=>'Crear repuesto'])->syncRoles([$role1]);
+        Permission::create(['name' => 'admin.repuestos.edit','description'=>'Editar datos de repuesto'])->syncRoles([$role1]);
+        Permission::create(['name' => 'admin.repuestos.destroy','description'=>'Eliminar repuesto'])->syncRoles([$role1]);
+
 
 
 

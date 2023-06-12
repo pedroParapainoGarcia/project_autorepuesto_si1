@@ -16,6 +16,14 @@ use App\Models\Repuesto;
 
 class RepuestoController extends Controller
 {
+    public function __construct()
+    {
+        
+         $this->middleware('can:admin.repuestos.index')->only('index');
+         $this->middleware('can:admin.repuestos.create')->only('create','store');
+         $this->middleware('can:admin.repuestos.edit')->only('edit','update');           
+         $this->middleware('can:admin.repuestos.destroy')->only('destroy');
+    }
 
     public function index()
     {
