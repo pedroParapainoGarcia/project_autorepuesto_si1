@@ -19,10 +19,9 @@
 
   <div class="mb-3">
    
-    <div class="form-group">
-        {{-- <label for="">Marcas</label> --}}
+    <div class="form-group">       
         {{ Form::label ('Marcas')}}
-        {{Form::select('id_marca',$marca,$modelo->id_marca,['class' => 'form-control' .($errors->has('id_marca') ? ' is-invalid' : ''), 'placeholder'=>'Seleccione una Marca']) }}
+        {{Form::select('id_marca',$marca,$modelo->id_marca,['class' => 'form-control' .($errors->has('id_marca') ? ' is-invalid' : '')]) }}
         {!! $errors->first('id_marca', '<div class="invalid-feedback">:message</div>')!!}
     </div>
 </div>

@@ -38,24 +38,21 @@ class RolController extends Controller
 
     public function create()
     {
-        $permissions= Permission::all();
+        $permission= Permission::all();
         
-        $this->authorize('vistaCrearRol',$permissions);
+        $this->authorize('vistaCrearRol',$permission);
 
-        return view('admin.roles.crear',compact('permissions'));
+        return view('admin.roles.crear',compact('permission'));
     }
 
 
     public function store(Request $request)
     {
-        $request->validate([
-            'name'=>'required|unique:roles,name',
+        $this->validate($request, [
+            'name' => 'required|unique:roles,name',
             'permission' => 'required',
-        ]); 
+        ]);      
         
-        // $role=Role::create($request->all());
-        // $role->permissions()->sync($request->permissions);
-        // return redirect()->route('admin.roles.index',$role);
 
         $role = Role::create(['name' => $request->input('name')]);
         $role->syncPermissions($request->input('permission'));
@@ -76,13 +73,7 @@ class RolController extends Controller
 
     public function edit($id)
     {
-        
-        // $permissions= Permission::all();
-       
-        // $this->authorize('vistaEditarRol',$permissions);
-
-        // return view('admin.roles.editar',compact('role','permissions'));
-        
+           
         $role = Role::find($id);
         $permission = Permission::get();
         $rolePermissions = DB::table("role_has_permissions")->where("role_has_permissions.role_id",$id)
@@ -97,12 +88,6 @@ class RolController extends Controller
 
     public function update(Request $request,$id)
     {
-        // $request->validate([
-        //     'name'=>'required'
-        // ]); 
-        // $role->update($request->all());
-        // $role->permissions()->sync($request->permissions);
-        // return redirect()->route('admin.roles.index',$role);
 
         $this->validate($request, [
             'name' => 'required',
@@ -131,8 +116,7 @@ class RolController extends Controller
 
     public function destroy($id)
     {
-        $rol =Role::find($id);
-        // DB::table("roles")->where('id',$id)->delete();
+        $rol =Role::find($id);       
 
         $bitacora = new Bitacora();   
         $id = Auth::id();       

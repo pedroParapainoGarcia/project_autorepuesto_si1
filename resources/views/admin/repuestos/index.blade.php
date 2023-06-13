@@ -78,8 +78,8 @@
             </td>
 
             <td>
-                <form action="{{ route ('admin.repuestos.destroy',$modelo->id)}}" method="POST">
-                    <a href="{{ route ('admin.repuestos.edit',$modelo->id)}}" class="btn btn-info">Editar</a>
+                <form action="{{ route ('admin.repuestos.destroy',$repuesto->id)}}" method="POST">
+                    <a href="{{ route ('admin.repuestos.edit',$repuesto->id)}}" class="btn btn-info">Editar</a>
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Borrar</button>

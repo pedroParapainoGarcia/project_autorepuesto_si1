@@ -107,12 +107,13 @@ class RepuestoController extends Controller
         $categoria = Categoria::pluck('nombre','id');
         $modelo= Modelo::pluck('nombre','id');
         $año= Año::pluck('añofabrica','id');  
-        $estante = Estante::pluck('descripcion','id');   
+        $estante = Estante::pluck('descripcion','id'); 
+
         return view('admin.repuestos.editar',compact('repuesto','nombrerepuesto','categoria','modelo','año','estante'));
     }
 
 
-    public function update(Request $request, string $id)
+    public function update(Request $request,$id)
     {
         $this->validate(request(), [
             'id_nombrerepuesto'=>'required',
@@ -128,7 +129,6 @@ class RepuestoController extends Controller
         $input = $request->all();
         $repuesto = Repuesto::find($id);
         $repuesto->update($input);
-
         $repuesto->save();
 
         $bitacora = new Bitacora();   
