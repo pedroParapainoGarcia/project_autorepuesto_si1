@@ -43,7 +43,7 @@ class MarcaController extends Controller
     {
         $this->validate(request(),[
             'nombre'=>'required',
-]);
+        ]);
         $marcas = new Marca();
 
         $marcas->nombre = $request->get('nombre');
@@ -61,7 +61,7 @@ class MarcaController extends Controller
        
 
         return redirect()->route('admin.marcas.index');
-;
+
     }
 
     public function show(string $id)

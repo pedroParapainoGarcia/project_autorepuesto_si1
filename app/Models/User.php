@@ -73,6 +73,7 @@ class User extends Authenticatable
        
     // }
 
+     //relacion uno a muchos usuario-notaDeCompras
     public function notadecompras(){
         return $this->hasMany(Notadecompra::class,'id');
     }

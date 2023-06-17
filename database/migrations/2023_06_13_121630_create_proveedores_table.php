@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('nombre',40);
             $table->string('direccion',40);
-            $table->integer('telefono');
-            $table->timestamps();
+            $table->integer('telefono');  
+            $table->timestamps();         
         });
     }
 

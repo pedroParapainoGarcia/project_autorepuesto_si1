@@ -3,46 +3,39 @@
 @section('title', 'CRUD con Laravel 8')
 
 @section('content_header')
-<h1>Listado de Usuarios</h1>
+<h1>Listado de Proveedores</h1>
 @stop
 
 @section('content')
 
-@can('admin.usuarios.create')
-    <a class="btn btn-primary mb-3" href="{{ route('admin.usuarios.create')}}">CREAR</a>
+@can('admin.proveedores.create')
+    <a class="btn btn-primary mb-3" href="{{ route('admin.proveedores.create')}}">CREAR</a>
 @endcan
 
-<table id="usuarios" class="table table-striped table-bordered shadow-lg mt-4" style="width:100%">
+<table id="proveedores" class="table table-striped table-bordered shadow-lg mt-4" style="width:100%">
     <thead class="bg-primary text-white">
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Nombre</th>
-            <th scope="col">Correo</th>
-            <th scope="col">Rol</th>
+            <th scope="col">Direccion</th>
+            <th scope="col">Telefono</th>
             <th scope="col">Acciones</th>
         </tr>
     </thead>
     <tbody>
-        @foreach ($usuarios as $usuario)
+        @foreach ($proveedores as $proveedor)
         <tr>
-            <td>{{$usuario->id}}</td>
-            <td>{{$usuario->name}}</td>
-            <td>{{$usuario->email}}</td>
+            <td>{{$proveedor->id}}</td>
+            <td>{{$proveedor->nombre}}</td>
+            <td>{{$proveedor->direccion}}</td> 
+            <td>{{$proveedor->telefono}}</td>
             <td>
-                @if(!empty($usuario->getRoleNames()))
-                @foreach($usuario->getRoleNames() as $rolNombre)
-                <h5><span class="badge badge-dark">{{ $rolNombre }}</span></h5>
-                @endforeach
-                @endif
-            </td>
-
-            <td>
-                @can('admin.usuarios.destroy' )
-                <form action="{{ route ('admin.usuarios.destroy',$usuario->id)}}" method="POST">
+                @can('admin.proveedores.destroy' )
+                <form action="{{ route ('admin.proveedores.destroy',$proveedor->id)}}" method="POST">
                     @csrf
 
-                    @can('admin.usuarios.edit')
-                    <a href="{{ route('admin.usuarios.edit',$usuario->id)}}" class="btn btn-info">Editar</a>
+                    @can('admin.proveedores.edit')
+                    <a href="{{ route('admin.proveedores.edit',$proveedor->id)}}" class="btn btn-info">Editar</a>
                     @endcan
 
                     @method('DELETE')
@@ -71,7 +64,7 @@
 
 <script>
     $(document).ready(function() {
-    $('#usuarios').DataTable({        
+    $('#proveedores').DataTable({        
             responsive: true,
             autoWidth: false,
             "language": {

@@ -12,16 +12,10 @@ use  App\Http\Controllers\Admin\MarcaController;
 use  App\Http\Controllers\Admin\AñoController;
 use  App\Http\Controllers\Admin\EstanteController;
 use  App\Http\Controllers\Admin\ModeloController;
+use App\Http\Controllers\Admin\ProveedorController;
 use App\Http\Controllers\Admin\RelacionController;
 use  App\Http\Controllers\Admin\RepuestoController;
-<<<<<<< HEAD
-
-
-
-
-=======
-use Illuminate\Routing\Route as RoutingRoute;
->>>>>>> 0f24ef00ca002941dbeb1bf16101034e40be016a
+ 
 
 Route::get('', [HomeController::class,'index'])->middleware('can:admin.home')->name('admin.home');//
 
@@ -45,16 +39,13 @@ Route::resource('estantes', EstanteController::class)->names('admin.estantes');
 
 Route::resource('repuestos', RepuestoController::class)->names('admin.repuestos');
 
+Route::resource('proveedores', ProveedorController::class)->names('admin.proveedores');
+
 
 
  
 
-//y creamos un grupo de rutas protegidas para los controladores
-//  Route::group(['middleware' => ['auth']], function() {
-//      Route::resource('roles', RolController::class)->names('admin.roles');
-//      Route::resource('usuarios', UserController::class)->names('admin.usuarios');
-    
-//  });
+
 
 
 

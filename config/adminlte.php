@@ -362,20 +362,6 @@ return [
                 ],
 
             ],
-        ],[
-            'text'    => 'Administrar Seguridad',
-            'icon'        => 'fas fa-user-shield',
-            'label'       => 4,
-            'label_color' => 'success',
-            'submenu' => [
-                // [
-                //     'text' => 'Gestionar Bitacora',
-                //     'route'  => 'admin.bitacora.index',
-                //     'icon' => 'fab fa-fw fa-buffer',
-                //     //'can'  => 'admin.bitacora.index',
-                // ],
-               
-            ],
         ],
         [
             'text'    => 'Administrar Inventario',
@@ -384,45 +370,45 @@ return [
             'label_color' => 'success',
             'submenu' => [
                 [
-                    'text' => 'Gestionar Nombre Repuesto',
+                    'text' => 'Nombres Repuesto',
                     'icon_color' => 'cyan',
                     'route'  => 'admin.nombrerepuestos.index',
                     //'icon' => 'fab fa-fw fa-buffer',
                     'can'  => 'admin.nombrerepuestos.index',
                 ],
                 [
-                    'text' => 'Gestionar Categorias',
+                    'text' => 'Categorias',
                     'icon_color' => 'cyan',
                     'route'  => 'admin.categorias.index',
                     //'icon' => 'fas fa-list',
                     'can'  => 'admin.categorias.index',
                 ],
                 [
-                    'text' => 'Gestionar Marcas',
+                    'text' => 'Marcas',
                     'route'  => 'admin.marcas.index',
                     'icon_color' => 'cyan',
                     'can'  => 'admin.marcas.index',
                 ],
                 [
-                    'text' => 'Gestionar Modelos',
+                    'text' => 'Modelos',
                     'route'  => 'admin.modelos.index',
                     'icon_color' => 'cyan',
                     'can'  => 'admin.modelos.index',
                 ],
                 [
-                    'text' => 'Gestionar Años Fab.',
+                    'text' => 'Años Fab.',
                     'route'  => 'admin.años.index',
                     'icon_color' => 'cyan',
                     'can'  => 'admin.años.index',
                 ],
                 [
-                    'text' => 'Gestionar Estantes.',
+                    'text' => 'Estantes',
                     'route'  => 'admin.estantes.index',
                     'icon_color' => 'cyan',
                     'can'  => 'admin.estantes.index',
                 ],
                 [
-                    'text' => 'Gestionar Inventario',
+                    'text' => 'Inventario',
                     'route'  => 'admin.repuestos.index',
                     'icon_color' => 'cyan',
                     'can'  => 'admin.repuestos.index',
@@ -430,6 +416,24 @@ return [
 
                
             ],
+            
+        ],
+        [
+            'text'    => 'Administrar Compras',
+            'icon'        => 'fas fa-warehouse',
+            'label'       => 4,
+            'label_color' => 'success',
+            'submenu' => [
+                [
+                    'text' => 'Proveedor',
+                    'icon_color' => 'cyan',
+                    'route'  => 'admin.proveedores.index',
+                    //'icon' => 'fab fa-fw fa-buffer',
+                    'can'  => 'admin.proveedores.index',
+                ],              
+               
+            ],
+            
         ],
         ['header' => 'labels'],
         [
