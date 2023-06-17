@@ -105,11 +105,19 @@
 <script>
     $(document).ready(function() {
     $('#repuestos').DataTable({
-        //"lengthMenu": [[5,10, 50, -1], [5, 10, 50, "All"]]
+        
         responsive: true,
         autoWidth: false,
         "language": {
-            "lengthMenu": "Mostrar _MENU_ registros por página",
+            "lengthMenu": "Mostrar" + 
+            `<select>
+                <option value = '5'>5</option>
+                <option value = '10'>10</option>
+                <option value = '25'>25</option>
+                <option value='100'>100</option>
+                <option value='-1'>All</option>
+                </select>` +            
+            "registros por página",
             "zeroRecords": "Nada encontrado - disculpa",
             "info": "Mostrando la página _PAGE_ de _PAGES_",
             "infoEmpty": "No records available",

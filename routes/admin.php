@@ -13,6 +13,8 @@ use  App\Http\Controllers\Admin\AñoController;
 use  App\Http\Controllers\Admin\EstanteController;
 use  App\Http\Controllers\Admin\ModeloController;
 use  App\Http\Controllers\Admin\RepuestoController;
+use  App\Http\Controllers\Admin\ProveedorController;
+
 
 
 
@@ -37,6 +39,8 @@ Route::resource('años', AñoController::class)->names('admin.años');
 Route::resource('estantes', EstanteController::class)->names('admin.estantes');
 
 Route::resource('repuestos', RepuestoController::class)->names('admin.repuestos');
+
+
 
  
 

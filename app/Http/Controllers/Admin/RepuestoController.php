@@ -129,7 +129,7 @@ class RepuestoController extends Controller
         $input = $request->all();
         $repuesto = Repuesto::find($id);
         $repuesto->update($input);
-        $repuesto->save();
+        
 
         $bitacora = new Bitacora();   
         $id = Auth::id();       
@@ -139,7 +139,8 @@ class RepuestoController extends Controller
         $bitacora->descripcion = 'Actualizó';
         $bitacora->subject_id = $repuesto->id;        
         $bitacora->save();
-    
+
+        $repuesto->save();
         return redirect()->route('admin.repuestos.index');
     }
 
