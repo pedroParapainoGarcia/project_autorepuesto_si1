@@ -19,7 +19,7 @@ class CategoriaSeeder extends Seeder
             'Radiadores', 'Parachoques', 'Faroles', 'Puertas',
             'Capot', 'Carrocerias', 'Tanques', 'Amortiguadores',
             'Coronas', 'Chasis', 'GuardaBarros', 'Manubrios',
-            'Cilindros', 'Asientos', 'Accesorios'
+            'Cilindros', 'Accesorios'
         ];
 
         foreach ($categorias as $categoria) {
