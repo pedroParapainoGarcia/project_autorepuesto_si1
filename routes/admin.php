@@ -12,9 +12,9 @@ use  App\Http\Controllers\Admin\MarcaController;
 use  App\Http\Controllers\Admin\AñoController;
 use  App\Http\Controllers\Admin\EstanteController;
 use  App\Http\Controllers\Admin\ModeloController;
+use App\Http\Controllers\Admin\RelacionController;
 use  App\Http\Controllers\Admin\RepuestoController;
-
-
+use Illuminate\Routing\Route as RoutingRoute;
 
 Route::get('', [HomeController::class,'index'])->middleware('can:admin.home')->name('admin.home');//
 
@@ -37,6 +37,8 @@ Route::resource('años', AñoController::class)->names('admin.años');
 Route::resource('estantes', EstanteController::class)->names('admin.estantes');
 
 Route::resource('repuestos', RepuestoController::class)->names('admin.repuestos');
+
+
 
  
 
