@@ -73,4 +73,8 @@ class User extends Authenticatable
        
     // }
 
+    public function notadecompras(){
+        return $this->hasMany(Notadecompra::class,'id');
+    }
+
 }

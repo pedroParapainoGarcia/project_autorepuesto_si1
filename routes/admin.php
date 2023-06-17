@@ -12,11 +12,16 @@ use  App\Http\Controllers\Admin\MarcaController;
 use  App\Http\Controllers\Admin\AñoController;
 use  App\Http\Controllers\Admin\EstanteController;
 use  App\Http\Controllers\Admin\ModeloController;
+use App\Http\Controllers\Admin\RelacionController;
 use  App\Http\Controllers\Admin\RepuestoController;
-use  App\Http\Controllers\Admin\ProveedorController;
+<<<<<<< HEAD
 
 
 
+
+=======
+use Illuminate\Routing\Route as RoutingRoute;
+>>>>>>> 0f24ef00ca002941dbeb1bf16101034e40be016a
 
 Route::get('', [HomeController::class,'index'])->middleware('can:admin.home')->name('admin.home');//
 
