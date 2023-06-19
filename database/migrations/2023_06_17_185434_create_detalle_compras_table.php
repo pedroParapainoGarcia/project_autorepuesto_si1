@@ -13,6 +13,18 @@ return new class extends Migration
     {
         Schema::create('detalle_compras', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('id_repuesto')
+            ->nullable()
+            ->constrained('repuestos')
+            ->cascadeOnUpdate()
+            ->nullOnDelete();
+            $table->foreignId('id_notadecompra')
+            ->nullable()
+            ->constrained('notadecompras')
+            ->cascadeOnUpdate()
+            ->nullOnDelete();
+            $table->integer('cantidad');
+            $table->decimal('costounitario',9,2);
             $table->timestamps();
         });
     }

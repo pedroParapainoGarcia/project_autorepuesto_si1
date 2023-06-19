@@ -45,5 +45,10 @@ class Repuesto extends Model
     public function estantes(){
         return $this->belongsTo(Marca::class,'id_estantes');
     }
+
+    //relacion muchos a muchos repuestos-notadecompras
+    public function notadecompras(){
+        return $this->belongsToMany(Notadecompra::class,'detalle_compras')->withPivot('cantidad','costounitario');
+    }
     
 }
