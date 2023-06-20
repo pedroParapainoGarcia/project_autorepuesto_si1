@@ -23,9 +23,9 @@ class Repuesto extends Model
     
     //relacion uno a muchos nombrerepuestos-repuestos (inversa)
     public function nombrerepuesto(){
-        //return $this->belongsTo(Nombrerepuesto::class,'id_nombrerepuesto');
+        return $this->belongsTo(Nombrerepuesto::class,'id_nombrerepuesto');
 
-        return $this->belongsTo(Marca::class,'id_nombrerepuesto');
+        //return $this->belongsTo(Marca::class,'id_nombrerepuesto');
 
  
     }
@@ -33,27 +33,27 @@ class Repuesto extends Model
     //relacion uno a muchos categorias-repuestos (inversa)
     public function categorias(){
  
-        return $this->belongsTo(Marca::class,'id_categoria');
+        //return $this->belongsTo(Marca::class,'id_categoria');
  
-        //return $this->belongsTo(Categoria::class,'id_categoria');
+       return $this->belongsTo(Categoria::class,'id_categoria');
     }
 
     //relacion uno a muchos modelos-repuestos (inversa)
     public function modelos(){
 
-        return $this->belongsTo(Marca::class,'id_modelo');
+       // return $this->belongsTo(Marca::class,'id_modelo');
 
-        //return $this->belongsTo(Modelo::class,'id_modelo');
+        return $this->belongsTo(Modelo::class,'id_modelo');
     }
 
     //relacion uno a muchos años-repuestos (inversa)
     public function años(){
-        return $this->belongsTo(Marca::class,'id_año');
+        return $this->belongsTo(Año::class,'id_año');
     }
 
     //relacion uno a muchos estantes-repuestos (inversa)
     public function estantes(){
-        return $this->belongsTo(Marca::class,'id_estantes');
+        return $this->belongsTo(Estante::class,'id_estantes');
     }
        
 
