@@ -324,30 +324,7 @@ return [
                     'icon' => 'fas fa-users fa-lock',
                     'can'  => 'admin.usuarios.index',
                 ],
-                // [
-                //     'text'    => 'level_one',
-                //     'url'     => '#',
-                //     'submenu' => [
-                //         [
-                //             'text' => 'level_two',
-                //             'url'  => '#',
-                //         ],
-                //         [
-                //             'text'    => 'level_two',
-                //             'url'     => '#',
-                //             'submenu' => [
-                //                 [
-                //                     'text' => 'level_three',
-                //                     'url'  => '#',
-                //                 ],
-                //                 [
-                //                     'text' => 'level_three',
-                //                     'url'  => '#',
-                //                 ],
-                //             ],
-                //         ],
-                //     ],
-                // ],
+               
                 [
                     'text' => 'Gestionar roles',
                     'route'  => 'admin.roles.index',
@@ -365,9 +342,7 @@ return [
         ],
         [
             'text'    => 'Administrar Inventario',
-            'icon'        => 'fas fa-warehouse',
-            'label'       => 4,
-            'label_color' => 'success',
+            'icon'        => 'fas fa-warehouse',            
             'submenu' => [
                 [
                     'text' => 'Nombres Repuesto',
@@ -420,9 +395,7 @@ return [
         ],
         [
             'text'    => 'Administrar Compras',
-            'icon'        => 'fas fa-warehouse',
-            'label'       => 4,
-            'label_color' => 'success',
+            'icon'        => 'fas cart-shopping',             
             'submenu' => [
                 [
                     'text' => 'Proveedor',
