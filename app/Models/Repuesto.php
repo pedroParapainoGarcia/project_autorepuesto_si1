@@ -23,25 +23,18 @@ class Repuesto extends Model
     
     //relacion uno a muchos nombrerepuestos-repuestos (inversa)
     public function nombrerepuesto(){
-        return $this->belongsTo(Nombrerepuesto::class,'id_nombrerepuesto');
-
-        //return $this->belongsTo(Marca::class,'id_nombrerepuesto');
-
+        return $this->belongsTo(Nombrerepuesto::class,'id_nombrerepuesto');     
  
     }
 
     //relacion uno a muchos categorias-repuestos (inversa)
     public function categorias(){
- 
-        //return $this->belongsTo(Marca::class,'id_categoria');
- 
+       
        return $this->belongsTo(Categoria::class,'id_categoria');
     }
 
     //relacion uno a muchos modelos-repuestos (inversa)
     public function modelos(){
-
-       // return $this->belongsTo(Marca::class,'id_modelo');
 
         return $this->belongsTo(Modelo::class,'id_modelo');
     }

@@ -17,12 +17,12 @@ return new class extends Migration
             ->nullable()
             ->constrained('repuestos')
             ->cascadeOnUpdate()
-            ->nullOnDelete();
+            ->cascadeOnDelete();
             $table->foreignId('id_notadecompra')
             ->nullable()
             ->constrained('notadecompras')
             ->cascadeOnUpdate()
-            ->nullOnDelete();
+            ->cascadeOnDelete();
             $table->integer('cantidad');
             $table->decimal('costounitario',9,2);
             $table->timestamps();

@@ -26,10 +26,10 @@ class RepuestoController extends Controller
     public function __construct()
     {
         
-         $this->middleware('can:admin.repuestos.index')->only('index');
-         $this->middleware('can:admin.repuestos.create')->only('create','store');
-         $this->middleware('can:admin.repuestos.edit')->only('edit','update');           
-         $this->middleware('can:admin.repuestos.destroy')->only('destroy');
+        //  $this->middleware('can:admin.repuestos.index')->only('index');
+        //  $this->middleware('can:admin.repuestos.create')->only('create','store');
+        //  $this->middleware('can:admin.repuestos.edit')->only('edit','update');           
+        //  $this->middleware('can:admin.repuestos.destroy')->only('destroy');
     }
 
     public function index()
@@ -41,18 +41,26 @@ class RepuestoController extends Controller
         $nombrerepuestos = Nombrerepuesto::all();
         $repuestos=Repuesto::all();       
         return view('admin.repuestos.index',compact('repuestos','nombrerepuestos','categorias','modelos','años','estantes'));
+    
+        // $modelos = Modelo::all();
+        // $marcas = Marca::all();         
+        // return view('admin.modelos.index',compact('modelos','marcas'));
     }
 
 
     public function create()
     {
         $repuesto = new Repuesto();
-        $nombrerepuesto = Nombrerepuesto::pluck('nombre','id');
-        $categoria = Categoria::pluck('nombre','id');
-        $modelo= Modelo::pluck('nombre','id');
-        $año= Año::pluck('añofabrica','id');  
-        $estante = Estante::pluck('descripcion','id');   
-        return view('admin.repuestos.crear',compact('repuesto','nombrerepuesto','categoria','modelo','año','estante'));
+        $nombrerepuestos = Nombrerepuesto::pluck('nombre','id');
+        $categorias = Categoria::pluck('nombre','id');
+        $modelos= Modelo::pluck('nombre','id');
+        $años= Año::pluck('añofabrica','id');  
+        $estantes = Estante::pluck('descripcion','id');   
+        return view('admin.repuestos.crear',compact('repuesto','nombrerepuestos','categorias','modelos','años','estantes'));
+    
+        // $modelo = new Modelo();
+        // $marcas= Marca::pluck('nombre','id');   
+        // return view('admin.modelos.crear',compact('modelo','marcas'));
     }
 
 
@@ -91,6 +99,8 @@ class RepuestoController extends Controller
             $bitacora->save();
         
          return redirect()->route('admin.repuestos.index');
+
+       
     }
 
 
@@ -119,7 +129,7 @@ class RepuestoController extends Controller
             'id_nombrerepuesto'=>'required',
             'descripcion'=>'required',
             'precioventa'=>'required',
-            'stock'=>'required',
+            'stock'=>'required',           
             'id_categoria'=>'required',
             'id_modelo'=>'required',
             'id_año'=>'required',
@@ -129,7 +139,8 @@ class RepuestoController extends Controller
         $input = $request->all();
         $repuesto = Repuesto::find($id);
         $repuesto->update($input);
-        
+
+        $repuesto->save();
 
         $bitacora = new Bitacora();   
         $id = Auth::id();       
@@ -140,7 +151,7 @@ class RepuestoController extends Controller
         $bitacora->subject_id = $repuesto->id;        
         $bitacora->save();
 
-        $repuesto->save();
+        
         return redirect()->route('admin.repuestos.index');
     }
 

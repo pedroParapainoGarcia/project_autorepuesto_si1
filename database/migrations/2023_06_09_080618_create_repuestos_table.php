@@ -18,7 +18,7 @@ return new class extends Migration
             ->nullable()
             ->constrained('nombrerepuestos')
             ->cascadeOnUpdate()
-            ->nullOnDelete();
+            ->cascadeOnDelete();
            
             $table->string('descripcion',75);
             $table->decimal('precioventa',9,2);
@@ -28,25 +28,25 @@ return new class extends Migration
             ->nullable()
             ->constrained('categorias')
             ->cascadeOnUpdate()
-            ->nullOnDelete();
+            ->cascadeOnDelete();
             
             $table->foreignId('id_modelo')
             ->nullable()
             ->constrained('modelos')
             ->cascadeOnUpdate()
-            ->nullOnDelete();
+            ->cascadeOnDelete();
 
             $table->foreignId('id_año')
             ->nullable()
             ->constrained('años')
             ->cascadeOnUpdate()
-            ->nullOnDelete();
+            ->cascadeOnDelete();
 
             $table->foreignId('id_estantes')
             ->nullable()
             ->constrained('estantes')
             ->cascadeOnUpdate()
-            ->nullOnDelete();
+            ->cascadeOnDelete();
 
             $table->timestamps();
         });

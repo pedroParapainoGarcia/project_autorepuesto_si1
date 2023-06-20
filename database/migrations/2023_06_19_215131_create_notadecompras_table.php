@@ -21,13 +21,13 @@ return new class extends Migration
             ->nullable()
             ->constrained('proveedores')
             ->cascadeOnUpdate()
-            ->nullOnDelete();
+            ->cascadeOnDelete();
 
             $table->foreignId('id_usuario')
             ->nullable()
             ->constrained('users')
             ->cascadeOnUpdate()
-            ->nullOnDelete();
+            ->cascadeOnDelete();
             $table->timestamps();
         });
     }
