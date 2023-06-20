@@ -342,7 +342,10 @@ return [
         ],
         [
             'text'    => 'Administrar Inventario',
-            'icon'        => 'fas fa-warehouse',            
+            'icon'        => 'fas fa-warehouse',      
+            'icon'        => 'fas fa-warehouse',
+            'label'       => 7,
+            'label_color' => 'success',
             'submenu' => [
                 [
                     'text' => 'Nombres Repuesto',
@@ -403,7 +406,15 @@ return [
                     'route'  => 'admin.proveedores.index',
                     //'icon' => 'fab fa-fw fa-buffer',
                     'can'  => 'admin.proveedores.index',
-                ],              
+                ], 
+                
+                [
+                    'text' => 'Nota de compra',
+                    'icon_color' => 'cyan',
+                    'route'  => 'admin.notadecompras.index',
+                    //'icon' => 'fab fa-fw fa-buffer',
+                    'can'  => 'admin.notadecompras.index',
+                ], 
                
             ],
             

@@ -137,4 +137,36 @@
             </div>
         </div>
     </body>
+    <table id="detallecompra" class="table table-striped table-bordered shadow-lg mt-4" style="width:100%">
+
+        <thead class="bg-primary text-white">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">ID_REPUESTO</th>
+                <th scope="col">ID_NOTADECOMPRA</th>
+                <th scope="col">CANTIDAD</th>
+                <th scope="col">COSTO UNITARIO</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($detallecompras as $detallecompra)
+            <tr>
+                <td>{{$detallecompra->id}}</td>
+                <td>{{$detallecompra->repuestos->descripcion}}</td>
+                <td>{{$detallecompra->notadecompras->nro_documento}}</td>
+                <td>{{$detallecompra->cantidad}}</td>
+                <td>{{$detallecompra->costounitario}}</td>
+                <td>
+                    <form action="{{ route ('admin.estantes.destroy',$detallecompra->id)}}" method="POST">
+                        <a href="{{ route ('admin.estantes.edit',$detallecompra->id)}}" class="btn btn-info">Editar</a>
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Borrar</button>
+                    </form>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
 </html>
