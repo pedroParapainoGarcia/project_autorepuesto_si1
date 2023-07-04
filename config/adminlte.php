@@ -342,7 +342,7 @@ return [
         ],
         [
             'text'    => 'Administrar Inventario',
-            'icon'        => 'fas fa-warehouse',      
+            'icon'        => 'fas fa-warehouse',
             'icon'        => 'fas fa-warehouse',
             'label'       => 7,
             'label_color' => 'success',
@@ -398,7 +398,9 @@ return [
         ],
         [
             'text'    => 'Administrar Compras',
-            'icon'        => 'fas cart-shopping',             
+            'icon'        => 'fas cart-shopping',   
+            'label'       => 2,     
+            'label_color' => 'success',     
             'submenu' => [
                 [
                     'text' => 'Proveedor',
@@ -420,7 +422,7 @@ return [
         [
             'text'    => 'Administrar Ventas',
             'icon'        => 'fas fa-warehouse',
-            'label'       => 4,
+            'label'       => 3,
             'label_color' => 'success',
             'submenu' => [
                 [
