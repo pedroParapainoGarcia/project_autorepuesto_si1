@@ -14,7 +14,7 @@
 
     <div class="form-group">
       {{ Form::label ('Nombre')}}
-      {{Form::select('id_nombrerepuesto',$nombrerepuesto,$repuesto->id_nombrerepuesto,['class' => 'form-control'
+      {{Form::select('id_nombrerepuesto',$nombrerepuestos,$repuesto->id_nombrerepuesto,['class' => 'form-control'
       .($errors->has('id_nombrerepuesto') ? ' is-invalid' : ''), 'placeholder'=>'Seleccione un nombre de repuesto']) }}
       {!! $errors->first('id_nombrerepuesto', '<div class="invalid-feedback">:message</div>')!!}
     </div>
@@ -42,7 +42,7 @@
   <div class="mb-3">
     <div class="form-group">      
       {{ Form::label ('Categoria')}}
-      {{Form::select('id_categoria',$categoria,$repuesto->id_categoria,['class' => 'form-control' .($errors->has('id_categoria') ? 'is-invalid' : ''), 'placeholder'=>'Seleccione una Categoria']) }}
+      {{Form::select('id_categoria',$categorias,$repuesto->id_categoria,['class' => 'form-control' .($errors->has('id_categoria') ? 'is-invalid' : ''), 'placeholder'=>'Seleccione una Categoria']) }}
       {!! $errors->first('id_marca', '<div class="invalid-feedback">:message</div>')!!}
     </div>
   </div>
@@ -50,7 +50,7 @@
   <div class="mb-3">
     <div class="form-group">      
       {{ Form::label ('Modelo')}}
-      {{Form::select('id_modelo',$modelo,$repuesto->id_modelo,['class' => 'form-control' .($errors->has('id_modelo') ? 'is-invalid' : ''), 'placeholder'=>'Seleccione un modelo']) }}
+      {{Form::select('id_modelo',$modelos,$repuesto->id_modelo,['class' => 'form-control' .($errors->has('id_modelo') ? 'is-invalid' : ''), 'placeholder'=>'Seleccione un modelo']) }}
       {!! $errors->first('id_modelo', '<div class="invalid-feedback">:message</div>')!!}
     </div>
   </div>
@@ -58,7 +58,7 @@
   <div class="mb-3">
     <div class="form-group">      
       {{ Form::label ('Año')}}
-      {{Form::select('id_año',$año,$repuesto->id_año,['class' => 'form-control' .($errors->has('id_año') ? 'is-invalid' : ''), 'placeholder'=>'Seleccione un año de fabricacion']) }}
+      {{Form::select('id_año',$años,$repuesto->id_año,['class' => 'form-control' .($errors->has('id_año') ? 'is-invalid' : ''), 'placeholder'=>'Seleccione un año de fabricacion']) }}
       {!! $errors->first('id_año', '<div class="invalid-feedback">:message</div>')!!}
     </div>
   </div>
@@ -66,7 +66,7 @@
   <div class="mb-3">
     <div class="form-group">      
       {{ Form::label ('Ubicacion Almacenamiento')}}
-      {{Form::select('id_estantes',$estante,$repuesto->id_estantes,['class' => 'form-control' .($errors->has('id_estantes') ? 'is-invalid' : ''), 'placeholder'=>'Seleccione una ubicacion donde almacenar']) }}
+      {{Form::select('id_estantes',$estantes,$repuesto->id_estantes,['class' => 'form-control' .($errors->has('id_estantes') ? 'is-invalid' : ''), 'placeholder'=>'Seleccione una ubicacion donde almacenar']) }}
       {!! $errors->first('id_estantes', '<div class="invalid-feedback">:message</div>')!!}
     </div>
   </div>

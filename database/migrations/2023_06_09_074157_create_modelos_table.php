@@ -20,7 +20,7 @@ return new class extends Migration
             ->nullable()
             ->constrained('marcas')
             ->cascadeOnUpdate()
-            ->nullOnDelete();
+            ->cascadeOnDelete();
             $table->timestamps();
         });
     }
