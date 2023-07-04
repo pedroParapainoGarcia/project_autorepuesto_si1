@@ -45,10 +45,10 @@ class ProveedorController extends Controller
             'telefono'=>'required',
             
         ]); 
-        
-        
-       
 
+
+
+        
         $proveedor= new Proveedore();
         $proveedor->nombre = $request->get('nombre');
         $proveedor->direccion = $request->get('direccion');

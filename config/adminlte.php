@@ -438,10 +438,40 @@ return [
                     'route'  => 'admin.notadecompras.index',
                     //'icon' => 'fab fa-fw fa-buffer',
                     'can'  => 'admin.notadecompras.index',
+                ],               
+            ],         
+        ],
+        [
+            'text'    => 'Administrar Ventas',
+            'icon'        => 'fas fa-warehouse',
+            'label'       => 4,
+            'label_color' => 'success',
+            'submenu' => [
+                [
+                    'text' => 'Clientes',
+                    'icon_color' => 'cyan',
+                    'route'  => 'admin.clientes.index',
+                    //'icon' => 'fab fa-fw fa-buffer',
+                    'can'  => 'admin.clientes.index',
                 ], 
+                
+                [
+                    'text' => 'Nota de Venta',
+                    'icon_color' => 'cyan',
+                    'route'  => 'admin.notadeventas.index',
+                    //'icon' => 'fab fa-fw fa-buffer',
+                    'can'  => 'admin.notadeventas.index',
+                ],
+                
+                [
+                    'text' => 'Nota de Pago',
+                    'icon_color' => 'cyan',
+                    'route'  => 'admin.notadepagos.index',
+                    //'icon' => 'fab fa-fw fa-buffer',
+                    //'can'  => 'admin.notadepagos.index',
+                ],
                
-            ],
-            
+            ],   
         ],
         ['header' => 'labels'],
         [

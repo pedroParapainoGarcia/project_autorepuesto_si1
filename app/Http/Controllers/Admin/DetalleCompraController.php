@@ -129,6 +129,6 @@ class DetalleCompraController extends Controller
         $bitacora->subject_id = $modelo->id;        
         $bitacora->save();*/
 
-        return redirect()->route('admin.detallecompras.index',compact('idnota'));
+        return redirect()->route('admin.detallecompras.index',['id' => $idnota]);
     }
 }

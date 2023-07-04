@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
 
+
 return [
 
     /*
@@ -170,6 +171,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
         //Spatie
        Spatie\Permission\PermissionServiceProvider::class,
@@ -188,6 +190,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class
     ])->toArray(),
 
 ];

@@ -10,13 +10,18 @@ use  App\Http\Controllers\Admin\NombrerepuestoController;
 use  App\Http\Controllers\Admin\CategoriaController;
 use  App\Http\Controllers\Admin\MarcaController;
 use  App\Http\Controllers\Admin\AñoController;
+use App\Http\Controllers\Admin\ClienteController;
 use App\Http\Controllers\Admin\DetalleCompraController;
+use App\Http\Controllers\Admin\DetalleVentaController;
 use  App\Http\Controllers\Admin\EstanteController;
 use  App\Http\Controllers\Admin\ModeloController;
 use App\Http\Controllers\Admin\NotadecompraController;
+use App\Http\Controllers\Admin\NotadepagoController;
+use App\Http\Controllers\Admin\NotadeventaController;
 use App\Http\Controllers\Admin\ProveedorController;
 //use App\Http\Controllers\Admin\RelacionController;
 use  App\Http\Controllers\Admin\RepuestoController;
+
 
 Route::get('', [HomeController::class,'index'])->middleware('can:admin.home')->name('admin.home');//
 
@@ -45,6 +50,21 @@ Route::resource('proveedores', ProveedorController::class)->names('admin.proveed
 Route::resource('notadecompras', NotadecompraController::class)->names('admin.notadecompras');
 
 Route::resource('detallecompras',DetalleCompraController::class)->names('admin.detallecompras');
+
+Route::resource('clientes',ClienteController::class)->names('admin.clientes');
+
+Route::resource('notadeventas',NotadeventaController::class)->names('admin.notadeventas');
+
+Route::resource('detalleventas',DetalleVentaController::class)->names('admin.detalleventas');
+
+Route::resource('notadepagos',NotadepagoController::class)->names('admin.notadepagos');
+// Ruta adicional para generar el PDF
+Route::get('detalleventas/{id}/generatePDF', [DetalleVentaController::class, 'generatePDF'])->name('admin.detalleventas.generatePDF');
+
+
+//Route::resource('relaciones',RelacionController::class)->names('admin.relaciones');
+
+
 
 
 
