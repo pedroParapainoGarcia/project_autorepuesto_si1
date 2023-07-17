@@ -14,6 +14,7 @@ use App\Models\Modelo;
 use App\Models\Nombrerepuesto;
 use App\Models\Repuesto;
 use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade as PDF;
 
 use  App\Http\Controllers\Admin\BitacoraController;
 use App\Http\Controllers\Admin\RolController; 
@@ -41,10 +42,6 @@ class RepuestoController extends Controller
         $nombrerepuestos = Nombrerepuesto::all();
         $repuestos=Repuesto::all();       
         return view('admin.repuestos.index',compact('repuestos','nombrerepuestos','categorias','modelos','años','estantes'));
-    
-        // $modelos = Modelo::all();
-        // $marcas = Marca::all();         
-        // return view('admin.modelos.index',compact('modelos','marcas'));
     }
 
 
@@ -172,4 +169,5 @@ class RepuestoController extends Controller
         $repuesto->delete();
         return redirect()->route('admin.repuestos.index');
     }
+
 }

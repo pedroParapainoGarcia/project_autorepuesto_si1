@@ -8,9 +8,10 @@
 
 @section('content')
 
-@can('admin.notadeventas.create')
+{{--@can('admin.notadeventas.create')--}}
     <a class="btn btn-primary mb-3" href="{{ route('admin.notadeventas.create')}}">CREAR</a>
-@endcan
+    <a class="btn btn-danger mb-3" href="{{ route('admin.notadeventas.report')}}">Generar Reporte</a>
+{{--@endcan--}}
 
 <table id="repuestos" class="table table-striped table-bordered shadow-lg mt-4" style="width:100%">
 

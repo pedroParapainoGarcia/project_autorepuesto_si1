@@ -12,6 +12,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class NotadeventaController extends Controller
 {
@@ -121,5 +122,29 @@ class NotadeventaController extends Controller
         $bitacora->save();
         $nota->delete();
         return redirect()->route('admin.notadeventas.index');
+    }
+
+    public function report(){
+        return view('admin.notadeventas.reporte');
+    }
+
+    public function generar(Request $request)
+    {
+        $fechaInicio = $request->input('fechainicio');
+        $fechaFin = $request->input('fechafin');
+    
+        // Buscar las notas de venta que estén entre las fechas especificadas
+        $notadeventas = Notadeventa::whereBetween('fecha', [$fechaInicio, $fechaFin])->get();
+        if ($notadeventas->isEmpty()) {
+            // Si no se encontraron notas de venta, redirigir al usuario con un mensaje de error
+            return redirect()->route('admin.notadecompras.report')
+                ->with('error', 'No se encontraron ventas entre las fechas especificadas.');
+        }
+        $request->session()->forget('error');
+        // Cargar la vista del PDF con los datos de las notas de venta
+        $pdf = \PDF::loadView('admin.notadeventas.pdf', compact('notadeventas'));
+        $pdf->setPaper('A4', 'portrait');
+    
+        return $pdf->download($fechaInicio. ' -> ' .$fechaFin.' .pdf');
     }
 }

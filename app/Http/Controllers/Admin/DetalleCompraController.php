@@ -131,4 +131,29 @@ class DetalleCompraController extends Controller
 
         return redirect()->route('admin.detallecompras.index',['id' => $idnota]);
     }
+
+    public function generatePDF($id)
+    {
+        $notaDeCompra = Notadecompra::findOrFail($id);
+        $costoTotal = $notaDeCompra->costototal;
+        $fecha = $notaDeCompra->fecha;
+        $proveedor = $notaDeCompra->provedores->nombre;
+        $direccion = $notaDeCompra->provedores->direccion;
+        $Spdf = $proveedor . ' - ' .$fecha;
+
+
+        $data = [
+            'detallecompras' => DetalleCompra::where('id_notadecompra',$id)->get(),
+            'costoTotal' => $costoTotal,
+            'proveedor' => $proveedor,
+            'direccion' => $direccion,
+            'fecha' => $fecha,
+        ];
+        
+        $pdf = \PDF::loadView('admin.detallecompras.pdf', $data);
+        $pdf->setPaper('A4', 'portrait');
+         
+        
+        return $pdf->download($Spdf . '.pdf');
+    }
 }

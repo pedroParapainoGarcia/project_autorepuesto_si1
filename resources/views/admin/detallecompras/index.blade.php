@@ -14,7 +14,7 @@
 @endcan
     <a class="btn btn-primary mb-3" href="{{ route('admin.notadecompras.index')}}">Volver</a>
     <a class="btn btn-primary mb-3" href="{{ route('admin.repuestos.index')}}">Inventario</a>
-
+    <a class="btn btn-danger mb-3" href="{{ route('admin.detallecompras.generatePDF', ['id' => $id]) }}">Reporte</a>
 <table id="repuestos" class="table table-striped table-bordered shadow-lg mt-4" style="width:100%">
 
     <thead class="bg-primary text-white">

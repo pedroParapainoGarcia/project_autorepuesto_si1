@@ -11,7 +11,8 @@ use App\Models\Repuesto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
-use Dompdf\Dompdf;
+//use Dompdf\Dompdf;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\Response;
 
 class DetalleVentaController extends Controller
@@ -161,8 +162,8 @@ class DetalleVentaController extends Controller
         
         $pdf = \PDF::loadView('admin.detalleventas.pdf', $data);
         $pdf->setPaper('A4', 'portrait');
-        
-        
+         
+
         return $pdf->download($nombre . '.pdf');
     }
 }

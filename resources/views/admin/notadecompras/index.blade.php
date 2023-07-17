@@ -10,6 +10,7 @@
 
 @can('admin.notadecompras.create')
     <a class="btn btn-primary mb-3" href="{{ route('admin.notadecompras.create')}}">CREAR</a>
+    <a class="btn btn-danger mb-3" href="{{ route('admin.notadecompras.report')}}">Generar Reporte</a>
 @endcan
 
 <table id="repuestos" class="table table-striped table-bordered shadow-lg mt-4" style="width:100%">

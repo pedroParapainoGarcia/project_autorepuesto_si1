@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Detalle de la Venta</title>
+    <title>Detalle de la Compra</title>
     <style>
         table {
             width: 100%;
@@ -15,8 +15,9 @@
     </style>
 </head>
 <body>
-    <h1>Detalle de la Venta</h1>
-    <p>Nombre: {{$nombre}}</p>
+    <h1>Detalle de la Compra</h1>
+    <p>Proveedor: {{$proveedor}}</p>
+    <p>Direccion: {{$direccion}}</p>
     <p>Fecha: {{$fecha}}</p>
     <table>
         <thead>
@@ -29,13 +30,13 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($detalleventas as $detalle)
+            @foreach ($detallecompras as $detalle)
                 <tr>
                     <td>{{ $detalle->repuesto->nombrerepuesto->nombre }}</td>
-                    <td>{{ $detalle->repuesto->descripcion }}</td>
+                    <td>{{ $detalle->repuesto->modelos->marcas->nombre. ' - ' .$detalle->repuesto->modelos->nombre. ' - ' .$detalle->repuesto->años->añofabrica }}</td>
                     <td>{{ $detalle->cantidad }}</td>
-                    <td>{{ $detalle->repuesto->precioventa }}</td>
-                    <td>{{ $detalle->subtotal }}</td>
+                    <td>{{ $detalle->costounitario }}</td>
+                    <td>{{ $detalle->cantidad * $detalle->costounitario }}</td>
                 </tr>
             @endforeach
         </tbody>

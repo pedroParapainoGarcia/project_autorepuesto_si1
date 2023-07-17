@@ -10,6 +10,7 @@ use App\Models\Repuesto;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class NotadecompraController extends Controller
 {
@@ -109,5 +110,30 @@ class NotadecompraController extends Controller
         $bitacora->save();*/
         $nota->delete();
         return redirect()->route('admin.notadecompras.index');
+    }
+
+    public function report(){
+        return view('admin.notadecompras.reporte');
+    }
+
+    public function generar(Request $request)
+    {
+        $fechaInicio = $request->input('fechainicio');
+        $fechaFin = $request->input('fechafin');
+    
+        // Buscar las notas de venta que estén entre las fechas especificadas
+        $notadecompras = Notadecompra::whereBetween('fecha', [$fechaInicio, $fechaFin])->get();
+
+        if ($notadecompras->isEmpty()) {
+            // Si no se encontraron notas de compra, redirigir al usuario con un mensaje de error
+            return redirect()->route('admin.notadecompras.report')
+                ->with('error', 'No se encontraron compras entre las fechas especificadas.');
+        }
+        $request->session()->forget('error');
+        // Cargar la vista del PDF con los datos de las notas de compra
+        $pdf = \PDF::loadView('admin.notadecompras.pdf', compact('notadecompras'));
+        $pdf->setPaper('A4', 'portrait');
+    
+        return $pdf->download($fechaInicio. ' -> ' .$fechaFin.' .pdf');
     }
 }

@@ -24,6 +24,7 @@
             <th scope="col">Nombre</th>
             <th scope="col">Descripcion</th>
             <th scope="col">Cantidad</th>
+            <th scope="col">Precio</th>
             <th scope="col">SubTotal</th>
             <th scope="col">Acciones</th>
         </tr>
@@ -54,6 +55,7 @@
             </td>
             
             <td>{{ $detalle->cantidad }}</td>
+            <td>{{ $detalle->repuesto->precioventa }}</td>
             <td>{{ $detalle->subtotal }}</td>
 
             <td>

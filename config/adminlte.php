@@ -430,7 +430,7 @@ return [
                     'icon_color' => 'cyan',
                     'route'  => 'admin.clientes.index',
                     //'icon' => 'fab fa-fw fa-buffer',
-                    'can'  => 'admin.clientes.index',
+                    //'can'  => 'admin.clientes.index',
                 ], 
                 
                 [
@@ -438,7 +438,7 @@ return [
                     'icon_color' => 'cyan',
                     'route'  => 'admin.notadeventas.index',
                     //'icon' => 'fab fa-fw fa-buffer',
-                    'can'  => 'admin.notadeventas.index',
+                    //'can'  => 'admin.notadeventas.index',
                 ],
                 
                 [
