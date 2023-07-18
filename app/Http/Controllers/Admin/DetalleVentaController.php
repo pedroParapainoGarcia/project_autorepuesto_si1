@@ -49,42 +49,44 @@ class DetalleVentaController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate(request(),[
-            'id_repuesto'=>'required',           
-            'id_notadeventa'=>'required',
-            'cantidad'=>'required']);
-
-            $id = $request->get('id_notadeventa');
-            $idR = $request->get('id_repuesto');
-
-            $detalle = new DetalleVenta();
-            $detalle->id_repuesto = $request->get('id_repuesto');
-            $detalle->id_notadeventa = $request->get('id_notadeventa');
-            $detalle->cantidad = $request->get('cantidad');
-            
-            
-
-            $repuesto = Repuesto::find($idR);
-            $repuesto->stock -= $request->get('cantidad');
-            $repuesto->save();
-
-            $detalle->subtotal = ($request->get('cantidad') * $repuesto->precioventa);
-            $detalle->save();
-
-            $nota = Notadeventa::find($id);
-            $nota->costototal += $detalle->subtotal;
-            $nota->save();
-
-            /*$bitacora = new Bitacora();   
-            $id = Auth::id();       
-            $bitacora->causer_id = $id ;
-            $bitacora->name = Role::find($id)->name;
-            $bitacora->long_name = 'Modelos';
-            $bitacora->descripcion = 'Registró';
-            $bitacora->subject_id = $modelo->id;        
-            $bitacora->save();*/
+           
         
-         return redirect()->route('admin.detalleventas.index',compact('id'));   
+            $this->validate(request(),[
+                'id_repuesto'=>'required',           
+                'id_notadeventa'=>'required',
+                'cantidad'=>'required']);
+    
+                $id = $request->get('id_notadeventa');
+                $idR = $request->get('id_repuesto');
+    
+                $detalle = new DetalleVenta();
+                $detalle->id_repuesto = $request->get('id_repuesto');
+                $detalle->id_notadeventa = $request->get('id_notadeventa');
+                $detalle->cantidad = $request->get('cantidad');
+                
+                
+    
+                $repuesto = Repuesto::find($idR);
+                $repuesto->stock -= $request->get('cantidad');
+                $repuesto->save();
+    
+                $detalle->subtotal = ($request->get('cantidad') * $repuesto->precioventa);
+                $detalle->save();
+    
+                $nota = Notadeventa::find($id);
+                $nota->costototal += $detalle->subtotal;
+                $nota->save();
+    
+                /*$bitacora = new Bitacora();   
+                $id = Auth::id();       
+                $bitacora->causer_id = $id ;
+                $bitacora->name = Role::find($id)->name;
+                $bitacora->long_name = 'Modelos';
+                $bitacora->descripcion = 'Registró';
+                $bitacora->subject_id = $modelo->id;        
+                $bitacora->save();*/
+            
+             return redirect()->route('admin.detalleventas.index',compact('id'));
     }
 
     /**

@@ -11,6 +11,9 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade as PDF;
+use Carbon\Carbon;
+
+
 
 class NotadecompraController extends Controller
 {
@@ -31,16 +34,14 @@ class NotadecompraController extends Controller
     {
         $this->validate(request(),[
             'nrodoc'=>'required',           
-            'id_proveedor'=>'required',
-            'costototal'=>'required',
-            'fecha'=>'required']);
+            'id_proveedor'=>'required']);
 
             $id = Auth::id();
             $nota = new Notadecompra();
             $nota->nro_documento = $request->get('nrodoc');
             $nota->id_proveedor = $request->get('id_proveedor');
-            $nota->costototal = $request->get('costototal');
-            $nota->fecha = $request->get('fecha');
+            $nota->costototal =0.00;
+            $nota->fecha =Carbon::now();
             $nota->id_usuario = User::find($id)->id;
             $nota->save();
 

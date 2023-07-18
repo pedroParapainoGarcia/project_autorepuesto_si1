@@ -47,6 +47,7 @@ class DetalleCompraController extends Controller
         $this->validate(request(),[
             'id_repuesto'=>'required',           
             'id_notadecompra'=>'required',
+            'codigo'=>'required',
             'cantidad'=>'required',
             'costounitario'=>'required']);
             $id = $request->get('id_notadecompra');
@@ -54,6 +55,7 @@ class DetalleCompraController extends Controller
             $detalle = new DetalleCompra();
             $detalle->id_repuesto = $request->get('id_repuesto');
             $detalle->id_notadecompra = $request->get('id_notadecompra');
+            $detalle->codigo = $request->get('codigo');
             $detalle->cantidad = $request->get('cantidad');
             $detalle->costounitario = $request->get('costounitario');
             $detalle->save();
@@ -120,14 +122,7 @@ class DetalleCompraController extends Controller
         $repuesto->save();
         
         $detalle->delete();
-        /*$bitacora = new Bitacora();   
-        $id = Auth::id();       
-        $bitacora->causer_id = $id ;
-        $bitacora->name = Role::find($id)->name;
-        $bitacora->long_name = 'Modelos';
-        $bitacora->descripcion = 'Eliminó';
-        $bitacora->subject_id = $modelo->id;        
-        $bitacora->save();*/
+   
 
         return redirect()->route('admin.detallecompras.index',['id' => $idnota]);
     }

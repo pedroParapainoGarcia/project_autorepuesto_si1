@@ -51,12 +51,18 @@ class Repuesto extends Model
 
     //relacion muchos a muchos repuestos-notadecompras
     public function notadecompras(){
-        return $this->belongsToMany(Notadecompra::class,'detalle_compras')->withPivot('cantidad','costounitario');
+        return $this->belongsToMany(Notadecompra::class,'detalle_compras')->withPivot('codigo','cantidad','costounitario');
     }
 
     //relacion muchos a muchos repuestos-notadeventas
     public function notadeventas(){
         return $this->belongsToMany(Notadeventa::class,'detalle_ventas')->withPivot('cantidad','subtotal');
     }
+
+        //relacion muchos a muchos repuestos-notadeventas
+        public function notasalidas(){
+            return $this->belongsToMany(NotaSalida::class,'detallesalidas')->withPivot('codigoRepuesto','cantidad','costounitario','subtotal');
+        }
+        
     
 }

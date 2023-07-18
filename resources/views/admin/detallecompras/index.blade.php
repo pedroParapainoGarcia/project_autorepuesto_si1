@@ -22,6 +22,7 @@
             <th scope="col">ID</th>
             <th scope="col">Nombre</th>
             <th scope="col">Descripcion</th>
+            <th scope="col">CodRepuesto</th>
             <th scope="col">Cantidad</th>
             <th scope="col">CostoUnitario</th>
             <th scope="col">Acciones</th>
@@ -53,7 +54,7 @@
                 @endif
                 @endforeach
             </td>
-            
+            <td>{{$detalle->codigo}}</td>
             <td>{{$detalle->cantidad}}</td>
             <td>{{$detalle->costounitario}}</td>
 

@@ -29,6 +29,6 @@ class Notadecompra extends Model
 
     //relacion muchos a muchos notadecompra-repuestos
     public function repuestos(){
-        return $this->belongsToMany(Repuesto::class,'detalle_compras')->withPivot('cantidad','costounitario');
+        return $this->belongsToMany(Repuesto::class,'detalle_compras')->withPivot('codigo','cantidad','costounitario');
     }
 }

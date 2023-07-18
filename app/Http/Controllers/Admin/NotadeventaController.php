@@ -13,7 +13,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
 use Barryvdh\DomPDF\Facade as PDF;
-
+use Carbon\Carbon;
+ 
 class NotadeventaController extends Controller
 {
     //
@@ -36,17 +37,15 @@ class NotadeventaController extends Controller
     {
         $this->validate(request(),[
             'id_cliente'=>'required',           
-            'descripcion'=>'required',
-            'fecha'=>'required',
-            'costototal'=>'required',
+            'descripcion'=>'required',            
             'notadepago' => 'nullable|boolean']);
 
             $id = Auth::id();
             $nota = new Notadeventa();
             $nota->id_cliente = $request->get('id_cliente');
             $nota->descripcion = $request->get('descripcion');
-            $nota->fecha = $request->get('fecha');
-            $nota->costototal = $request->get('costototal');
+            $nota->fecha = Carbon::now();
+            $nota->costototal = 0.00;
             $nota->id_usuario = User::find($id)->id;
             $nota->notadepago = $request->get('notadepago') ? 1 : 0;
             $nota->save();

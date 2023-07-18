@@ -11,21 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('detalle_compras', function (Blueprint $table) {
+        Schema::create('detallesalidas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_repuesto')
-            ->nullable()
+            $table->foreignId('id_notasalida')        
+            ->constrained('notasalidas')
+            ->cascadeOnUpdate()
+            ->cascadeOnDelete();
+
+            $table->foreignId('id_repuestos')
             ->constrained('repuestos')
             ->cascadeOnUpdate()
             ->cascadeOnDelete();
-            $table->foreignId('id_notadecompra')
-            ->nullable()
-            ->constrained('notadecompras')
-            ->cascadeOnUpdate()
-            ->cascadeOnDelete();
-            $table->string('codigo');
+
+            $table->string("codigoRepuesto");            
             $table->integer('cantidad');
             $table->decimal('costounitario',9,2);
+            $table->decimal('subtotal',9,2);          
             $table->timestamps();
         });
     }
@@ -35,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('detalle_compras');
+        Schema::dropIfExists('detallesalidas');
     }
 };

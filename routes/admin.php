@@ -21,6 +21,10 @@ use App\Http\Controllers\Admin\NotadeventaController;
 use App\Http\Controllers\Admin\ProveedorController;
 //use App\Http\Controllers\Admin\RelacionController;
 use  App\Http\Controllers\Admin\RepuestoController;
+use App\Http\Controllers\DetallesalidaController;
+use App\Http\Controllers\NotasalidaController;
+
+
 use App\Models\Notadeventa;
 use App\Models\Repuesto;
 
@@ -70,7 +74,8 @@ Route::resource('notadepagos',NotadepagoController::class)->names('admin.notadep
 
 
 
-//Route::resource('relaciones',RelacionController::class)->names('admin.relaciones');
+Route::resource('detallesalidas',DetallesalidaController::class)->names('admin.detallesalidas');
+Route::resource('notasalidas',NotasalidaController::class)->names('admin.notasalidas');
 
 
 
