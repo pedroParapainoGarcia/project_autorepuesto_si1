@@ -35,7 +35,6 @@
   <button type="submit" class="btn btn-primary" tabindex="4">Guardar</button>
 </form>
 @stop
-
 @section('css')
 <link rel="stylesheet" href="/css/admin_custom.css">
 @stop

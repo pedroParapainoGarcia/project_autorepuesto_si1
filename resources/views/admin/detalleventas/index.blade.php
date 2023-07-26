@@ -3,22 +3,22 @@
 @section('title', 'CRUD con Laravel 8')
 
 @section('content_header')
-    <h1>Detalles</h1>
+<h1>Detalles</h1>
 @stop
 
 @section('content')
 
 @can('admin.detallecompras.create')
-    <a class="btn btn-primary mb-3" href="{{ route('admin.detalleventas.create', ['id' => $id]) }}">Agregar Venta</a>
-    {{--<a href="{{ route('admin.detallecompras.index',['id' => $nota->id]) }}" class="btn btn-info">Ver detalles</a>--}}
+<a class="btn btn-primary mb-3" href="{{ route('admin.detalleventas.create', ['id' => $id]) }}">Agregar Venta</a>
+{{--<a href="{{ route('admin.detallecompras.index',['id' => $nota->id]) }}" class="btn btn-info">Ver detalles</a>--}}
 @endcan
 
-    <a class="btn btn-primary mb-3" href="{{ route('admin.notadeventas.index') }}">Volver</a>
-    <a class="btn btn-primary mb-3" href="{{ route('admin.repuestos.index') }}">Inventario</a>
-    <a class="btn btn-danger mb-3" href="{{ route('admin.detalleventas.generatePDF', ['id' => $id]) }}">Reporte</a>
+<a class="btn btn-primary mb-3" href="{{ route('admin.notadeventas.index') }}">Volver</a>
+<a class="btn btn-primary mb-3" href="{{ route('admin.repuestos.index') }}">Inventario</a>
+<a class="btn btn-danger mb-3" href="{{ route('admin.detalleventas.generatePDF', ['id' => $id]) }}">Reporte</a>
 
-<table id="repuestos" class="table table-striped table-bordered shadow-lg mt-4" style="width:100%">
-    <thead class="bg-primary text-white">
+<table id="detallesventas" class="table table-striped table-bordered shadow-lg mt-4" style="width:100%">
+    <thead class="bg-custom-red text-white">
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Nombre</th>
@@ -30,16 +30,16 @@
         </tr>
     </thead>
     <tbody>
-       @foreach ($detalleventas as $detalle)
+        @foreach ($detalleventas as $detalle)
         <tr>
             <td>{{ $detalle->id }}</td>
-           
+
             <td>
                 @foreach($repuestos as $repuesto)
                     @if($detalle->id_repuesto == $repuesto->id)
                         @foreach ($nombres as $nombre)
                             @if ($repuesto->id_nombrerepuesto == $nombre->id)
-                                <h5><span class="badge badge-dark">{{ $nombre->nombre }}</span></h5>
+                                    <h5><span class="badge badge-dark">{{ $nombre->nombre }}</span></h5>
                             @endif
                         @endforeach
                     @endif
@@ -48,12 +48,12 @@
 
             <td>
                 @foreach($repuestos as $repuesto)
-                    @if($detalle->id_repuesto == $repuesto->id)
-                        <h5><span class="badge badge-dark">{{ $repuesto->descripcion }}</span></h5>
-                    @endif
+                @if($detalle->id_repuesto == $repuesto->id)
+                <h5><span class="badge badge-dark">{{ $repuesto->descripcion }}</span></h5>
+                @endif
                 @endforeach
             </td>
-            
+
             <td>{{ $detalle->cantidad }}</td>
             <td>{{ $detalle->repuesto->precioventa }}</td>
             <td>{{ $detalle->subtotal }}</td>
@@ -62,12 +62,24 @@
                 <form action="{{ route('admin.detalleventas.destroy', $detalle->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Borrar</button>
+                    <button type="submit" class="btn bg-custom-red text-white">Borrar</button>
                 </form>
             </td>
         </tr>
-    @endforeach
+        @endforeach
     </tbody>
+    <tfoot>
+
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+
+    </tfoot>
 </table>
 @stop
 
@@ -83,7 +95,7 @@
 
 <script>
     $(document).ready(function() {
-    $('#repuestos').DataTable({
+    $('#detallesventas').DataTable({
         
         responsive: true,
         autoWidth: false,
@@ -106,8 +118,19 @@
                 'next':'Siguiente',
                 'previous':'Anterior'
             }
+        },
+     
+        "drawCallback": function () {
+                var api = this.api();
+                $(api.column(5).footer()).html(
+                    'Total: ' + api.column(5, { page: 'current' }).data().reduce(function (a, b) {
+                        return parseFloat(a) + parseFloat(b);
+                    }, 0)
+            );
         }
     });
+
+    
 } );
 </script>
 

@@ -30,13 +30,12 @@
             @php
                 $totalVentas = 0;
             @endphp
-            @foreach ($notadeventas as $nota)
+            @foreach ($notasalida as $nota)
                 @php
                     $totalVentas += $nota->costototal;
                 @endphp
                 <tr>
-                    <td>{{ $nota->usuarios->name }}</td>
-                    <td>{{ $nota->clientes->Nombre. '  ' .$nota->clientes->apellido_paterno.' '.$nota->clientes->apellido_materno }}</td>
+                    <td>{{ $nota->usuarios->name }}</td>                    
                     <td>{{ $nota->fecha }}</td>
                     <td>{{ $nota->costototal }}</td>
                     <td>{{ $nota->descripcion }}</td>
@@ -44,6 +43,6 @@
             @endforeach
         </tbody>
     </table>
-    <p style="text-align: right;">Ventas Total: {{ $totalVentas }}</p>
+    <p style="text-align: right;"> Total: {{ $totalVentas }}</p>
 </body>
 </html>

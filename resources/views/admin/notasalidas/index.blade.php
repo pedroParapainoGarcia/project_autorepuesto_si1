@@ -3,72 +3,54 @@
 @section('title', 'CRUD con Laravel 8')
 
 @section('content_header')
-<h1>Nota de compra</h1>
+<h1>Nota de Salidas</h1>
 @stop
 
 @section('content')
 
-@can('admin.notadecompras.create')
-<div class="container-fluid">
-    <a class="btn btn-primary mb-3" href="{{ route('admin.notadecompras.create')}}">+ Registrar compras</a>
-    <a class="btn btn-danger mb-3" href="{{ route('admin.notadecompras.report')}}">Generar Reporte <i
-            class="fas fa-file-pdf ml-2"></i></a>
-    <div class="col-md-6 col-xl-12">
-        <h5 style="text-align: right; margin-right: 30px; ">Fecha: {{$fechaActual}}</h5>
-    </div>
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong> Guardado!</strong> Se registró la compra
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
+<head>
+    <style>
+        .card {
+            border: 1px solid #adb5bd;
+        }
+    </style>
+</head>
+<a class="btn btn-primary mb-3" href="{{ route('admin.detallesalidas.create')}}">+ NUEVA NOTA DE SALIDA</a>
+<div class="col-md-6 col-xl-12">
+    <h5 style="text-align: right; margin-right: 30px; ">Fecha: {{$fechaActual}}</h5>
 </div>
-@endcan
-
-
-
-
 <div class="card">
-    <div class="card-body">
+    <div class="card-body"></div>
 
-        <table id="repuestos" class="table compra table-striped mt-0.5 table-bordered shadow-lg dt-responsive nowrap">
+
+        <table id="notasalidas" class="table venta table-striped mt-0.5 table-bordered shadow-lg dt-responsive nowrap">
 
             <thead class="bg-custom-red text-white">
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Proveedor</th>
-                    <th scope="col">Costo Total</th>
                     <th scope="col">Fecha</th>
-                    <th scope="col">Especificaciones</th>
+                    <th scope="col">Costo Total</th>                    
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($notadecompras as $nota)
+                @foreach ($notasalidas as $nota)
                 <tr>
                     <td>{{$nota->id}}</td>
-                    <td>
-                        @foreach($proveedores as $proveedor)
-                        @if($nota->id_proveedor == $proveedor->id)
-                        <h5><span class="badge badge-dark">{{$proveedor->nombre}}</span></h5>
-                        @endif
-                        @endforeach
-                    </td>
-
-                    <td>{{$nota->costototal}}</td>
                     <td>{{$nota->fecha}}</td>
-                    <td><a href="{{ route('admin.detallecompras.index',['id' => $nota->id]) }}" class="btn btn-info">Ver
-                            detalles <i class="fas fa-eye"></i></a></td>
-
+                    <td>{{$nota->costototal}}</td>                   
                     <td>
-                        <form action="{{ route ('admin.notadecompras.destroy',$nota->id)}}" method="POST">
-                            <a href="{{ route ('admin.notadecompras.edit',$nota->id)}}" class="btn btn-info">Editar</a>
+                        
+                        <form action="{{ route ('admin.notasalidas.destroy',$nota->id)}}" method="POST">
+                            <a href="{{ route('admin.detallesalidas.index',['id' => $nota->id]) }}" class="btn btn-info">detalles <i class="fas fa-eye"></i>
+                        </a>
+                        <a class="btn btn-danger text-bold" href="{{ route('admin.notasalidas.pdf',$nota->id)}}">Imprimir<i class="fas fa-file-pdf ml-2"></i>
+                        </a>
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn bg-custom-red text-white">Borrar</button>
                         </form>
                     </td>
-
                 </tr>
                 @endforeach
             </tbody>
@@ -89,7 +71,7 @@
 
 <script>
     $(document).ready(function() {
-    $('#repuestos').DataTable({
+    $('#notasalidas').DataTable({
         
         responsive: true,
         autoWidth: false,
@@ -118,3 +100,6 @@
 </script>
 
 @stop
+
+
+

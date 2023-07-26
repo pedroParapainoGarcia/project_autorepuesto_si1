@@ -14,7 +14,7 @@
 @endcan
 <table id="marcas" class="table table-striped table-bordered shadow-lg mt-4" style="width:100%">
 
-    <thead class="bg-primary text-white">
+    <thead class="bg-custom-red text-white">
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Nombre</th>
@@ -31,7 +31,7 @@
                     <a href="{{ route ('admin.marcas.edit',$marca->id)}}" class="btn btn-info">Editar</a>
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Borrar</button>
+                    <button type="submit" class="btn bg-custom-red text-white">Borrar</button>
                 </form>
             </td>
         </tr>

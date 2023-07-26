@@ -9,12 +9,12 @@
 @section('content')
 
 @can('admin.repuestos.create')
-    <a class="btn btn-primary mb-3" href="{{ route('admin.repuestos.create')}}">CREAR</a>
+<a class="btn btn-primary mb-3" href="{{ route('admin.repuestos.create')}}">CREAR</a>
 @endcan
 
 <table id="repuestos" class="table table-striped table-bordered shadow-lg mt-4" style="width:100%">
 
-    <thead class="bg-primary text-white">
+    <thead class="bg-custom-red text-white">
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Nombre</th>
@@ -32,7 +32,7 @@
         @foreach ($repuestos as $repuesto)
         <tr>
             <td>{{$repuesto->id}}</td>
-           
+
             <td>
                 @foreach($nombrerepuestos as $nombre)
                 @if($repuesto->id_nombrerepuesto == $nombre->id)
@@ -40,11 +40,11 @@
                 @endif
                 @endforeach
             </td>
-            
+
             <td>{{$repuesto->descripcion}}</td>
             <td>{{$repuesto->precioventa}}</td>
             <td>{{$repuesto->stock}}</td>
-            
+
             <td>
                 @foreach($categorias as $categoria)
                 @if($repuesto->id_categoria == $categoria->id)
@@ -79,10 +79,11 @@
 
             <td>
                 <form action="{{ route ('admin.repuestos.destroy',$repuesto->id)}}" method="POST">
-                    <a href="{{ route ('admin.repuestos.edit',$repuesto->id)}}" class="btn btn-info">Editar</a>
+                    <a href="{{ route ('admin.repuestos.edit',$repuesto->id)}}" class="btn btn-info"><i
+                            class="fa fa-edit"></i></a>
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Borrar</button>
+                    <button type="submit" class="btn bg-custom-red text-white"><i class="fa fa-trash"></i></button>
                 </form>
             </td>
 
@@ -95,12 +96,18 @@
 @section('css')
 <link rel="stylesheet" href="/css/admin_custom.css">
 <link href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+
 @stop
 
 @section('js')
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap5.min.js"></script>
+
+
+
+<!-- SUM()  Datatables-->
+<script src="https://cdn.datatables.net/plug-ins/1.10.20/api/sum().js"></script>
 
 <script>
     $(document).ready(function() {
@@ -127,9 +134,17 @@
                 'next':'Siguiente',
                 'previous':'Anterior'
             }
-        }
-    });
-} );
+        },
+        
+        
+    });  
+
+ 
+
+
+
+} ); 
+
 </script>
 
 @stop

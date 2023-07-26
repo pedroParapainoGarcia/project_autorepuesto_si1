@@ -63,8 +63,8 @@ return [
     |
     */
 
-    'logo' => '<b>Escondite del</b> 4x4',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo' => '<b></b>',//DESCRIPCION A LADO DEL LOGO
+    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo2.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -84,13 +84,13 @@ return [
     */
 
     'auth_logo' => [
-        'enabled' => false,
+        'enabled' => true,
         'img' => [
-            'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+            'path' => 'vendor/adminlte/dist/img/AdminLTELogo2.png',
             'alt' => 'Auth Logo',
             'class' => '',
-            'width' => 50,
-            'height' => 50,
+            'width' => 130,
+            'height' => 110,
         ],
     ],
 
@@ -109,7 +109,7 @@ return [
     'preloader' => [
         'enabled' => true,
         'img' => [
-            'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+            'path' => 'vendor/adminlte/dist/img/AdminLTELogo2.png',
             'alt' => 'AdminLTE Preloader Image',
             'effect' => 'animation__shake',
             'width' => 60,
@@ -131,7 +131,7 @@ return [
 
     'usermenu_enabled' => true,
     'usermenu_header' => true,
-    'usermenu_header_class' => 'bg-primary',
+    'usermenu_header_class' => 'bg-custom-red text-white',
     'usermenu_image' => false,
     'usermenu_desc' => false,
     'usermenu_profile_url' => false,
@@ -192,9 +192,9 @@ return [
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-dark-primary elevation-4',
+    'classes_sidebar' => 'sidebar-dark-danger elevation-4',
     'classes_sidebar_nav' => '',
-    'classes_topnav' => 'navbar-primary navbar-light',
+    'classes_topnav' => 'navbar-dark navbar-light', //para midificar color
     'classes_topnav_nav' => 'navbar-expand',
     'classes_topnav_container' => 'container',
 
@@ -253,7 +253,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'admin.home',//admin es el nombre de la ruta de la vista principal
+    'dashboard_url' => 'admin.home',//admin es el nombre de la ruta de la vista principal   
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -305,7 +305,7 @@ return [
             'route'  => 'admin.home',
            'can'  => 'admin.home',// metodo can utilizado para permitir ver una vista usando roles
            'icon'  => 'fas fa-fw fa-home',
-           'icon_color' => 'red'
+           'icon_color' => 'white'
         ], 
         ['header' => 'PAQUETES'],
         [
@@ -467,6 +467,26 @@ return [
         //     'icon_color' => 'cyan',
         //     'url'        => '#',
         // ],
+        [
+            'text'    => 'Notas de salidas',
+            'icon'        => 'fas fa-warehouse',
+            // 'label'       => '';
+            // 'label_color' => 'success',
+            'submenu' => [
+                
+                
+                [
+                    'text' => 'Nota de salida',
+                    'icon_color' => 'cyan',
+                    'route'  => 'admin.notasalidas.index',
+                    //'icon' => 'fab fa-fw fa-buffer',
+                    //'can'  => 'admin.notadeventas.index',
+                ],
+                
+                
+               
+            ],   
+        ],
     ],
 
     /*

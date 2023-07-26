@@ -36,7 +36,7 @@
     <div class="col-12 col-md-4">
       <label for="" class="form-label">Cantidad</label>
       <input autocomplete="off" id="cantidad" name="cantidad" type="number" class="form-control" tabindex="2"
-        placeholder="Ingrese la descripcion del repuesto">
+        placeholder="Ingrese la cantidad">
     </div>
 
     <div class="col-12 col-md-4">

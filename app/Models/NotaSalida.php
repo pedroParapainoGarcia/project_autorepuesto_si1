@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class NotaSalida extends Model
+class Notasalida extends Model
 {
     use HasFactory;
     protected $fillable = [        
@@ -21,7 +21,7 @@ class NotaSalida extends Model
     }
 
     //relacion muchos a muchos notadesalida-repuestos
-    public function repuestos(){
+    public function repuesto(){
         return $this->belongsToMany(Repuesto::class,'detallesalidas')->withPivot('codigoRepuesto','cantidad','costounitario','subtotal');
     }
 }

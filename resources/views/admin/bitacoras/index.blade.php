@@ -10,7 +10,7 @@
 
 
 <table id="bitacoras" class="table table-striped table-bordered shadow-lg mt-4" style="width:100%">
-    <thead class="bg-primary text-white">
+    <thead class="bg-custom-red text-white">
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Usuario</th>

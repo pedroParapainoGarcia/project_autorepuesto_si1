@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Repuesto extends Model
 {
     use HasFactory;
-
-    use HasFactory;
     protected $fillable = [
         'id_nombrerepuesto',
         'descripcion',

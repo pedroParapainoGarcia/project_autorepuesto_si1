@@ -17,7 +17,7 @@
     <a class="btn btn-danger mb-3" href="{{ route('admin.detallecompras.generatePDF', ['id' => $id]) }}">Reporte</a>
 <table id="repuestos" class="table table-striped table-bordered shadow-lg mt-4" style="width:100%">
 
-    <thead class="bg-primary text-white">
+    <thead class="bg-custom-red text-white">
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Nombre</th>
@@ -64,7 +64,7 @@
                     {{--<a href="{{ route ('admin.repuestos.edit',$repuesto->id)}}" class="btn btn-info">Editar</a>--}}
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Borrar</button>
+                    <button type="submit" class="btn bg-custom-red text-white">Borrar</button>
                 </form>
             </td>
 

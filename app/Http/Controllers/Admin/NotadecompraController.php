@@ -20,7 +20,8 @@ class NotadecompraController extends Controller
     public function index(){
         $notadecompras = Notadecompra::all();
         $proveedores = Proveedore::all();  
-        return view('admin.notadecompras.index',compact('notadecompras','proveedores'));
+        $fechaActual=Carbon::now();
+        return view('admin.notadecompras.index',compact('notadecompras','proveedores','fechaActual'));
     }
 
     public function create()

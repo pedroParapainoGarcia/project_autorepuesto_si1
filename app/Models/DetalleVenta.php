@@ -21,6 +21,6 @@ class DetalleVenta extends Model
     // Relación muchos a uno: DetalleVenta -> Notadeventa
     public function notadeventa()
     {
-        return $this->belongsTo(Notadecompra::class, 'id_notadeventa');
+        return $this->belongsTo(Notadeventa::class, 'id_notadeventa');
     }
 }

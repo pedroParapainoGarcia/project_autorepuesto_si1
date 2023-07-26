@@ -31,8 +31,7 @@ class DetalleVentaController extends Controller
     {   
         $id = $request->id;
         $detalleventa = new DetalleVenta();    
-        $repuestos = Repuesto::select('id', 'descripcion', 'id_modelo', 'id_año')
-        ->get();
+        $repuestos = Repuesto::select('id', 'descripcion', 'id_modelo', 'id_año')->get();
     
         $repuestosOptions = [];
         
@@ -43,6 +42,8 @@ class DetalleVentaController extends Controller
             $descripcion = $repuesto->descripcion . ' - ' . $marca . ' - ' . $modeloNombre . ' - ' . $añoFabrica;
             $repuestosOptions[$repuesto->id] = $descripcion;
         }
+
+        
 
         return view('admin.detalleventas.crear',compact('detalleventa','repuestosOptions','id'));
     }

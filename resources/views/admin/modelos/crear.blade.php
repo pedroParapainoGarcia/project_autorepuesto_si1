@@ -15,13 +15,14 @@
       placeholder="Ingrese el nombre del modelo">
   </div>
 
-  <div class="mb-3">   
+  <div class="mb-3">
     <div class="form-group">
-        {{ Form::label ('Marcas')}}
-        {{Form::select('id_marca',$marcas,$modelo->id_marca,['class' => 'form-control' .($errors->has('id_marca') ? ' is-invalid' : ''), 'placeholder'=>'Seleccione una Marca']) }}
-        {!! $errors->first('id_marca', '<div class="invalid-feedback">:message</div>')!!}
+      {{ Form::label ('Marcas')}}
+      {{Form::select('id_marca',$marcas,$modelo->id_marca,['class' => 'form-control' .($errors->has('id_marca') ? '
+      is-invalid' : ''), 'placeholder'=>'Seleccione una Marca']) }}
+      {!! $errors->first('id_marca', '<div class="invalid-feedback">:message</div>')!!}
     </div>
-</div>
+  </div>
 
   <a href="{{ route('admin.modelos.index')}}" class="btn btn-secondary" tabindex="3">Cancelar</a>
   <button type="submit" class="btn btn-primary" tabindex="4">Guardar</button>

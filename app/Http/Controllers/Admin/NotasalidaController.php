@@ -1,64 +1,63 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
+use App\Models\DetalleCompra;
+use App\Models\Detallesalida;
+use App\Models\Notasalida;
+use App\Models\Repuesto;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use PDF;
 
 class NotasalidaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    //
+    public function index(Request $request)
+    {
+        $id = $request->id;
+        $notasalidas = Notasalida::all();
+        $fechaActual = Carbon::now();
+
+        return view('admin.notasalidas.index', compact('notasalidas', 'fechaActual','id'));
+    }
+
+
+    public function create(Request $request)
     {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        //        
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         //
     }
+     
+    public function pdf($id){
+       
+        $notasalida = Notasalida::findOrFail($id); // Obtener la venta específica por ID
+
+        $pdf = PDF::loadView('admin.notasalidas.pdf', compact('notasalida'));
+
+        // Opcional: Descargar el PDF directamente
+        // return $pdf->download('venta_' . $venta->id . '.pdf');
+
+        // Opcional: Mostrar el PDF en el navegador
+        return $pdf->stream('notadesalidas_' . $notasalida->id . '.pdf');
+    }
+
+    
 }
