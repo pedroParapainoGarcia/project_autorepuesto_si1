@@ -85,7 +85,7 @@ class User extends Authenticatable
 
       //relacion uno a muchos usuario-notaDeVentas
       public function notasalidas(){
-        return $this->hasMany(NotaSalida::class,'id');
+        return $this->hasMany(Notasalida::class,'id');
     }
 
 }
