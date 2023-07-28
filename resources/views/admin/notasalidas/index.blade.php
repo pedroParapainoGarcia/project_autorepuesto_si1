@@ -45,11 +45,11 @@
                         <a href="{{ route('admin.detallesalidas.index',['id' => $nota->id]) }}"
                             class="btn btn-info">detalles <i class="fas fa-eye"></i>
                         </a>
-                        <a class="btn btn-danger text-bold"
+                        {{-- <a class="btn btn-danger text-bold"
                             href="{{ route('admin.notasalidas.pdf',$nota->id)}}">Imprimir<i
                                 class="fas fa-file-pdf ml-2"></i>
                         </a>
-                        @csrf
+                        @csrf --}}
                  
                 </td>
             </tr>
