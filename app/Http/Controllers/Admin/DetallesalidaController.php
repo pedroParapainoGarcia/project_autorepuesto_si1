@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Bitacora;
 use App\Models\DetalleCompra;
 use App\Models\Detallesalida;
 use App\Models\Nombrerepuesto;
@@ -13,6 +14,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
+
 
 
 
@@ -103,6 +105,25 @@ class DetallesalidaController extends Controller
 
         $notasalida->costototal = $totalnota;
         $notasalida->save();
+
+        $bitacora = new Bitacora();   
+        $id = Auth::id();       
+        $bitacora->causer_id = $id ;
+        $bitacora->name = Role::find($id)->name;
+        $bitacora->long_name = 'Nota Salidas';
+        $bitacora->descripcion = 'Registró';
+        $bitacora->subject_id = $notasalida->id;        
+        $bitacora->save();
+
+        $bitacora = new Bitacora();
+        $id = Auth::id();
+        $bitacora->causer_id = $id;
+        $bitacora->name = Role::find($id)->name;
+        $bitacora->long_name = 'Inventario';
+        $bitacora->descripcion = 'Registró Baja';
+        $bitacora->subject_id = $repuesto->id;
+        $bitacora->save();
+
         return redirect()->route('admin.notasalidas.index')->with('success', 'Baja de Repuesto Registrada Correctamente');
     }
 

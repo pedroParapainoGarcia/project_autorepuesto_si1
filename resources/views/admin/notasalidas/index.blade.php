@@ -8,13 +8,13 @@
 
 @section('content')
 
-<head>
+{{-- <head>
     <style>
         .card {
             border: 1px solid #adb5bd;
         }
     </style>
-</head>
+</head> --}}
 <a class="btn btn-primary mb-3" href="{{ route('admin.detallesalidas.create')}}">+ NUEVA NOTA DE SALIDA</a>
 <div class="col-md-6 col-xl-12">
     <h5 style="text-align: right; margin-right: 30px; ">Fecha: {{$fechaActual}}</h5>
@@ -23,39 +23,40 @@
     <div class="card-body"></div>
 
 
-        <table id="notasalidas" class="table venta table-striped mt-0.5 table-bordered shadow-lg dt-responsive nowrap">
+    <table id="notasalidas" class="table venta table-striped mt-0.5 table-bordered shadow-lg dt-responsive nowrap">
 
-            <thead class="bg-custom-red text-white">
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Fecha</th>
-                    <th scope="col">Costo Total</th>                    
-                    <th scope="col">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($notasalida as $nota)
-                <tr>
-                    <td>{{$nota->id}}</td>
-                    <td>{{$nota->fecha}}</td>
-                    <td>{{$nota->costototal}}</td>                   
-                    <td>
-                        
-                        <form action="{{ route ('admin.notasalidas.destroy',$nota->id)}}" method="POST">
-                            <a href="{{ route('admin.detallesalidas.index',['id' => $nota->id]) }}" class="btn btn-info">detalles <i class="fas fa-eye"></i>
+        <thead class="bg-custom-red text-white">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Costo Total</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($notasalida as $nota)
+            <tr>
+                <td>{{$nota->id}}</td>
+                <td>{{$nota->fecha}}</td>
+                <td>{{$nota->costototal}}</td>
+                <td>
+
+                    
+                        <a href="{{ route('admin.detallesalidas.index',['id' => $nota->id]) }}"
+                            class="btn btn-info">detalles <i class="fas fa-eye"></i>
                         </a>
-                        <a class="btn btn-danger text-bold" href="{{ route('admin.notasalidas.pdf',$nota->id)}}">Imprimir<i class="fas fa-file-pdf ml-2"></i>
+                        <a class="btn btn-danger text-bold"
+                            href="{{ route('admin.notasalidas.pdf',$nota->id)}}">Imprimir<i
+                                class="fas fa-file-pdf ml-2"></i>
                         </a>
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn bg-custom-red text-white">Borrar</button>
-                        </form>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
+                        @csrf
+                 
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
 </div>
 @stop
 
@@ -100,6 +101,3 @@
 </script>
 
 @stop
-
-
-

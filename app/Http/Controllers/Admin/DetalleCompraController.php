@@ -11,6 +11,10 @@ use App\Models\Notadecompra;
 use App\Models\Repuesto;
 use Illuminate\Http\Request;
 
+use App\Models\Bitacora;
+use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Models\Role;
+
 
 
 class DetalleCompraController extends Controller
@@ -68,15 +72,15 @@ class DetalleCompraController extends Controller
             $nota->costototal += ($detalle->cantidad * $detalle->costounitario);
             $nota->save();
 
-            /*$bitacora = new Bitacora();   
+            $bitacora = new Bitacora();   
             $id = Auth::id();       
             $bitacora->causer_id = $id ;
             $bitacora->name = Role::find($id)->name;
-            $bitacora->long_name = 'Modelos';
-            $bitacora->descripcion = 'Registró';
-            $bitacora->subject_id = $modelo->id;        
-            $bitacora->save();*/
-        
+            $bitacora->long_name = 'Inventario';
+            $bitacora->descripcion = 'Registró ingreso';
+            $bitacora->subject_id = $repuesto->id;        
+            $bitacora->save();
+       
          return redirect()->route('admin.detallecompras.index',compact('id'));   
     }
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Bitacora;
 use App\Models\DetalleCompra;
 use App\Models\Notadecompra;
 use App\Models\Proveedore;
@@ -12,7 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade as PDF;
 use Carbon\Carbon;
-
+use Spatie\Permission\Models\Role;
 
 
 class NotadecompraController extends Controller
@@ -46,14 +47,14 @@ class NotadecompraController extends Controller
             $nota->id_usuario = User::find($id)->id;
             $nota->save();
 
-            /*$bitacora = new Bitacora();   
+            $bitacora = new Bitacora();   
             $id = Auth::id();       
             $bitacora->causer_id = $id ;
             $bitacora->name = Role::find($id)->name;
-            $bitacora->long_name = 'Modelos';
+            $bitacora->long_name = 'Nota de compra';
             $bitacora->descripcion = 'Registró';
-            $bitacora->subject_id = $modelo->id;        
-            $bitacora->save();*/
+            $bitacora->subject_id = $nota->id;        
+            $bitacora->save();
         
          return redirect()->route('admin.notadecompras.index');    
     }

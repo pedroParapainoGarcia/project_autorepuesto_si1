@@ -9,18 +9,22 @@
 @section('content')
 <form action="{{ route ('admin.modelos.store')}}" method="POST">
   @csrf
-  <div class="mb-3">
-    <label for="" class="form-label">Modelo</label>
-    <input autocomplete="off" id="nombre" name="nombre" type="text" class="form-control" tabindex="1"
-      placeholder="Ingrese el nombre del modelo">
-  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6">
+      <div class="form-group">
+        <label for="" class="form-label">Modelo</label>
+        <input autocomplete="off" id="nombre" name="nombre" type="text" class="form-control" tabindex="1"
+          placeholder="Ingrese el nombre del modelo">
+      </div>
+    </div>
 
-  <div class="mb-3">
-    <div class="form-group">
-      {{ Form::label ('Marcas')}}
-      {{Form::select('id_marca',$marcas,$modelo->id_marca,['class' => 'form-control' .($errors->has('id_marca') ? '
-      is-invalid' : ''), 'placeholder'=>'Seleccione una Marca']) }}
-      {!! $errors->first('id_marca', '<div class="invalid-feedback">:message</div>')!!}
+    <div class="col-xs-12 col-sm-12 col-md-6">
+      <div class="form-group">
+        {{ Form::label ('Marcas')}}
+        {{Form::select('id_marca',$marcas,$modelo->id_marca,['class' => 'form-control' .($errors->has('id_marca') ? '
+        is-invalid' : ''), 'placeholder'=>'Seleccione una Marca']) }}
+        {!! $errors->first('id_marca', '<div class="invalid-feedback">:message</div>')!!}
+      </div>
     </div>
   </div>
 

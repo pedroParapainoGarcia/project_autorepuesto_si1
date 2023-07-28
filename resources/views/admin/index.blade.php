@@ -31,7 +31,9 @@
                                     @endphp
                                     <h2 class="text-right"><i
                                             class="fa fa-users f-left"></i><span>{{$cant_usuarios}}</span></h2>
+                                    @can('admin.usuarios.index')
                                     <p class="m-b-0 text-right"><a href="admin/usuarios" class="text-white">Ver más</a>
+                                        @endcan
                                     </p>
                                 </div>
                             </div>
@@ -48,7 +50,10 @@
                                     @endphp
                                     <h2 class="text-right"><i
                                             class="fa fa-box f-left"></i><span>{{$cant_repuestos}}</span></h2>
+                                    @can('admin.repuestos.index')
                                     <p class="m-b-0 text-right"><a href="admin/repuestos" class="text-white">Ver más</a>
+                                        @endcan
+
                                     </p>
                                 </div>
                             </div>
@@ -64,7 +69,11 @@
                                     @endphp
                                     <h2 class="text-right"><i
                                             class="fa fa-users f-left"></i><span>{{$cant_proveedores}}</span></h2>
-                                    <p class="m-b-0 text-right"><a href="admin/proveedores" class="text-white">Ver más</a>
+
+                                    @can('admin.proveedores.index')
+                                    <p class="m-b-0 text-right"><a href="admin/proveedores" class="text-white">Ver
+                                            más</a>
+                                        @endcan
                                     </p>
                                 </div>
                             </div>
@@ -86,7 +95,7 @@
                             </div>
                         </div>
 
-                        
+
                         <div class="col-md-4 col-xl-4">
                             <div class="card bg-c-green order-card">
                                 <div class="card-block">
@@ -97,7 +106,11 @@
                                     @endphp
                                     <h2 class="text-right"><i
                                             class="fa fa-cart-plus f-left"></i><span>{{$cant_compras}}</span></h2>
-                                    <p class="m-b-0 text-right"><a href="admin/notadecompras" class="text-white">Ver más</a></p>
+
+                                    @can('admin.notadecompras.index')
+                                    <p class="m-b-0 text-right"><a href="admin/notadecompras" class="text-white">Ver
+                                            más</a></p>
+                                    @endcan
                                 </div>
                             </div>
                         </div>
@@ -112,7 +125,46 @@
                                     @endphp
                                     <h2 class="text-right"><i
                                             class="fa fa-cart-plus f-left"></i><span>{{$cant_ventas}}</span></h2>
-                                    <p class="m-b-0 text-right"><a href="admin/notadeventas" class="text-white">Ver más</a></p>
+                                    <p class="m-b-0 text-right"><a href="admin/notadeventas" class="text-white">Ver
+                                            más</a></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-xl-4">
+                            <div class="card bg-c-pink order-card">
+                                <div class="card-block">
+                                    <h5>Notas Salida (Baja de Repuestos)</h5>
+                                    @php
+                                    use App\Models\Notasalida;
+                                    $cant_salidas = Notasalida::count();
+                                    @endphp
+                                    <h2 class="text-right"><i
+                                            class="fa fa-cart-plus f-left"></i><span>{{$cant_salidas}}</span></h2>
+                                            @can('admin.notasalidas.index')
+                                            <p class="m-b-0 text-right"><a href="admin/notasalidas" class="text-white">Ver
+                                            más</a></p>
+                                            @endcan
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-xl-4">
+                            <div class="card bg-c-purple order-card">
+                                <div class="card-block">
+                                    <h5>Bitácora</h5>
+                                    @php
+                                    use App\Models\Bitacora;
+                                    $cant_bitacora = Bitacora::count();
+                                    @endphp
+                                    <h2 class="text-right"><i
+                                            class="fa fa-users f-left"></i><span>{{$cant_bitacora}}</span></h2>
+
+                                    @can('admin.bitacoras.index')
+                                    <p class="m-b-0 text-right"><a href="admin/bitacoras" class="text-white">Ver
+                                            más</a>
+                                        @endcan
+                                    </p>
                                 </div>
                             </div>
                         </div>

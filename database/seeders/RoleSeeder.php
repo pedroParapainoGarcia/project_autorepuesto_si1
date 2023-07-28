@@ -65,6 +65,32 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'admin.repuestos.edit','description'=>'Editar datos de repuesto'])->syncRoles([$role1]);
         Permission::create(['name' => 'admin.repuestos.destroy','description'=>'Eliminar repuesto'])->syncRoles([$role1]);
 
+        Permission::create(['name' => 'admin.bitacoras.index','description'=>'Ver Bitacora'])->syncRoles([$role1]);
+
+        Permission::create(['name' => 'admin.proveedores.index','description'=>'Ver Listado de Proveedores'])->syncRoles([$role1]);
+        Permission::create(['name' => 'admin.proveedores.create','description'=>'Crear Proveedor'])->syncRoles([$role1]);
+        Permission::create(['name' => 'admin.proveedores.edit','description'=>'Editar datos de Proveedor'])->syncRoles([$role1]);
+        Permission::create(['name' => 'admin.proveedores.destroy','description'=>'Eliminar proveedor'])->syncRoles([$role1]);
+
+        Permission::create(['name' => 'admin.clientes.index','description'=>'Ver Listado de clientes'])->syncRoles([$role1]);
+        Permission::create(['name' => 'admin.clientes.create','description'=>'Crear cliente'])->syncRoles([$role1]);
+        Permission::create(['name' => 'admin.clientes.edit','description'=>'Editar datos de cliente'])->syncRoles([$role1]);
+        Permission::create(['name' => 'admin.clientes.destroy','description'=>'Eliminar cliente'])->syncRoles([$role1]);
+
+        Permission::create(['name' => 'admin.notadecompras.index','description'=>'Ver Listado de Nota de compras'])->syncRoles([$role1]);
+        Permission::create(['name' => 'admin.notadecompras.create','description'=>'Crear Nota de compra'])->syncRoles([$role1]);
+        Permission::create(['name' => 'admin.notadecompras.edit','description'=>'Editar Nota de compra'])->syncRoles([$role1]);
+        Permission::create(['name' => 'admin.notadecompras.destroy','description'=>'Eliminar Nota de compra'])->syncRoles([$role1]);
+
+        Permission::create(['name' => 'admin.notadeventas.index','description'=>'Ver Listado de Nota de Ventas'])->syncRoles([$role1]);
+        Permission::create(['name' => 'admin.notadeventas.create','description'=>'Crear Nota de Venta'])->syncRoles([$role1]);
+        Permission::create(['name' => 'admin.notadeventas.edit','description'=>'Editar Nota de Venta'])->syncRoles([$role1]);
+        Permission::create(['name' => 'admin.notadeventas.destroy','description'=>'Eliminar Nota de Venta'])->syncRoles([$role1]);
+
+        Permission::create(['name' => 'admin.notasalidas.index','description'=>'Ver Listado de Nota de Salidas'])->syncRoles([$role1]);
+        Permission::create(['name' => 'admin.notasalidas.create','description'=>'Crear Nota de Salida'])->syncRoles([$role1]);
+       
+
 
 
 

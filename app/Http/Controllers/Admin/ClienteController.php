@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Bitacora;
+
 use App\Models\Cliente;
 use Illuminate\Http\Request;
+use App\Models\Bitacora;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
 

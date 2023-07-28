@@ -309,12 +309,6 @@ return [
         ], 
         ['header' => 'PAQUETES'],
         [
-            'text' => 'profile',
-            // 'url'  => 'admin/settings',
-            'url'  => 'user/profile',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
             'text'    => 'Administrar Personal',
             'icon'        => 'fas fa-id-card',//fab fa-fw fa-buffer'         
             'submenu' => [
@@ -451,22 +445,6 @@ return [
                
             ],   
         ],
-        // ['header' => 'labels'],
-        // [
-        //     'text'       => 'important',
-        //     'icon_color' => 'red',
-        //     'url'        => '#',
-        // ],
-        // [
-        //     'text'       => 'warning',
-        //     'icon_color' => 'yellow',
-        //     'url'        => '#',
-        // ],
-        // [
-        //     'text'       => 'information',
-        //     'icon_color' => 'cyan',
-        //     'url'        => '#',
-        // ],
         [
             'text'    => 'Notas de salidas',
             'icon'        => 'fas fa-warehouse',
@@ -480,7 +458,7 @@ return [
                     'icon_color' => 'cyan',
                     'route'  => 'admin.notasalidas.index',
                     //'icon' => 'fab fa-fw fa-buffer',
-                    //'can'  => 'admin.notadeventas.index',
+                    'can'  => 'admin.notasalidas.index',
                 ],
                 
                 

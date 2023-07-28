@@ -16,22 +16,28 @@
     <input id="name" name="name" type="text" class="form-control" value="{{$role->name}}">
   </div>
 
-  
-  <div class="form-group">
     <label for="">Permisos para este Rol:</label>
-    <br/>
+  <div class="row g-3">     
+    <br />
     @foreach($permission as $privilegio)
-        <label>{{ Form::checkbox('permission[]', $privilegio->id, in_array($privilegio->id, $rolePermissions) ? true : false, array('class' => 'name')) }}
-        {{ $privilegio->description }}</label>
-    <br/>
+    <div class="col-12 col-md-3">
+      <div class="form-group">
+        <label>{{ Form::checkbox('permission[]', $privilegio->id, in_array($privilegio->id, $rolePermissions) ? true :
+          false, array('class' => 'name')) }}
+          {{ $privilegio->description }}</label>
+        <br />
+      </div>
+    </div>
     @endforeach
-</div>
-
-  
 
 
-<a href="{{ route('admin.roles.index')}}" class="btn btn-secondary" tabindex="3">Cancelar</a>
-<button type="submit" class="btn btn-primary" tabindex="4">Actualizar</button>
+  </div>
+
+
+
+
+  <a href="{{ route('admin.roles.index')}}" class="btn btn-secondary" tabindex="3">Cancelar</a>
+  <button type="submit" class="btn btn-primary" tabindex="4">Actualizar</button>
 </form>
 @stop
 

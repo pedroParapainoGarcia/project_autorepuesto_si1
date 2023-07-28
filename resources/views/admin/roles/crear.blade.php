@@ -6,7 +6,7 @@
 <h1>Crear Nuevo Roles</h1>
 @stop
 
-@section('content') 
+@section('content')
 <form action="{{ route ('admin.roles.store')}}" method="POST">
   @csrf
   <div class="mb-3">
@@ -15,14 +15,18 @@
       placeholder="Ingrese el nombre del Rol">
   </div>
 
-  <div class="form-group">
-    <label for="">Permisos para este Rol:</label>
-    <br/>
+  <label for="">Permisos para este Rol:</label>
+  <div class="row g-3">  
+    <br />
     @foreach($permission as $permiso)
+    <div class="col-12 col-md-3">
+      <div class="form-group">
         <label>{{ Form::checkbox('permission[]', $permiso->id, false, array('class' => 'name')) }}
-        {{ $permiso->description }}
-    </label>
-    <br/>
+          {{ $permiso->description }}
+        </label>
+        <br />
+      </div>
+    </div>
     @endforeach
   </div>
 

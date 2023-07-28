@@ -57,6 +57,17 @@ class NotadeventaController extends Controller
             $bitacora->descripcion = 'Registró una venta';
             $bitacora->subject_id = $nota->id;        
             $bitacora->save();
+
+            if($nota->notadepago==1){
+            $bitacora = new Bitacora();       
+            $bitacora->causer_id = $id ;
+            $bitacora->name = Role::find($id)->name;
+            $bitacora->long_name = 'Nota de Pago';
+            $bitacora->descripcion = 'Registró una nota de pago';
+            $bitacora->subject_id = $nota->id;        
+            $bitacora->save();
+
+            }
         
          return redirect()->route('admin.notadeventas.index');    
     }
