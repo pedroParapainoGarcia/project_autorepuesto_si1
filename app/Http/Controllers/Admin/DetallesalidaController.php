@@ -72,7 +72,7 @@ class DetallesalidaController extends Controller
         $notasalida = new Notasalida();
         $notasalida->fecha = Carbon::now();
         $notasalida->costototal = 0.00; //se actualizara mas adelante 
-        $notasalida->id_usuario = User::find($id)->name;
+        $notasalida->id_usuario = User::find($id)->id;
         $notasalida->save();
 
         $totalnota = 0;
