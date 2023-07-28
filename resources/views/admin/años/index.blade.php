@@ -28,10 +28,11 @@
             <td>{{$año->añofabrica}}</td>
             <td>
                 <form action="{{ route ('admin.años.destroy',$año->id)}}" method="POST">
-                    <a href="{{ route ('admin.años.edit',$año->id)}}" class="btn btn-info">Editar</a>
+                    <a href="{{ route ('admin.años.edit',$año->id)}}" class="btn btn-info"><i
+                        class="fa fa-edit"></i></a>
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn bg-custom-red text-white">Borrar</button>
+                    <button type="submit" class="btn bg-custom-red text-white"><i class="fa fa-trash"></i></button>
                 </form>
             </td>
         </tr>

@@ -13,7 +13,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.1.0/css/adminlte.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
-
+<div class="col-md-6 col-xl-12">
+    <h5 style="text-align: right; margin-right: 30px; ">Fecha: {{$fechaActual}}</h5>
+</div>
 <div class="section-body">
     <div class="row">
         <div class="col-lg-12">

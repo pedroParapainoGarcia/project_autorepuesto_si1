@@ -42,11 +42,12 @@
                     @csrf
 
                     @can('admin.usuarios.edit')
-                    <a href="{{ route('admin.usuarios.edit',$usuario->id)}}" class="btn btn-info">Editar</a>
+                    <a href="{{ route('admin.usuarios.edit',$usuario->id)}}" class="btn btn-info"><i
+                        class="fa fa-edit"></i></a>
                     @endcan
 
                     @method('DELETE')
-                    <button type="submit" class="btn bg-custom-red text-white">Borrar</button>
+                    <button type="submit" class="btn bg-custom-red text-white"><i class="fa fa-trash"></i></button>
                 </form>
                 @endcan
             </td>

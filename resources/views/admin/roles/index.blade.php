@@ -32,11 +32,12 @@
 
 
                     @can('admin.roles.edit')
-                    <a href="{{ route('admin.roles.edit',$role->id)}}" class="btn btn-info">Editar</a>
+                    <a href="{{ route('admin.roles.edit',$role->id)}}" class="btn btn-info"><i
+                        class="fa fa-edit"></i></a>
                     @endcan
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn  bg-custom-red text-white">Borrar</button>
+                    <button type="submit" class="btn bg-custom-red text-white"><i class="fa fa-trash"></i></button>
                 </form>
                 @endcan
 

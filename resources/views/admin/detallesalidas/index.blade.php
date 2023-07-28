@@ -68,8 +68,8 @@
                     <td>
                         <form action="{{ route('admin.detalleventas.destroy', $detalle->id) }}" method="POST">
                             @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn bg-custom-red text-white">Borrar</button>
+                            @method('DELETE')                        
+                            <button type="submit" class="btn bg-custom-red text-white"><i class="fa fa-trash"></i></button>
                         </form>
                     </td>
                 </tr>

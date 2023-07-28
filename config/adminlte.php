@@ -316,6 +316,7 @@ return [
                     'text' => 'Gestionar usuarios',
                     'route'  => 'admin.usuarios.index',
                     'icon' => 'fas fa-users fa-lock',
+                    'icon_color' => 'cyan',
                     'can'  => 'admin.usuarios.index',
                 ],
                
@@ -323,12 +324,14 @@ return [
                     'text' => 'Gestionar roles',
                     'route'  => 'admin.roles.index',
                     'icon' => 'fas fa-user-lock',
+                    'icon_color' => 'cyan',
                     'can'  => 'admin.roles.index',
                 ],
                 [
                     'text' => 'Gestionar Bitacora',
                     'route'  => 'admin.bitacoras.index',
                     'icon' => 'fab fa-fw fa-buffer',
+                    'icon_color' => 'cyan',
                     //'can'  => 'admin.bitacora.index',
                 ],
 
@@ -345,44 +348,49 @@ return [
                     'text' => 'Nombres Repuesto',
                     'icon_color' => 'cyan',
                     'route'  => 'admin.nombrerepuestos.index',
-                    //'icon' => 'fab fa-fw fa-buffer',
+                    'icon' => 'fas fa-list',
                     'can'  => 'admin.nombrerepuestos.index',
                 ],
                 [
-                    'text' => 'Categorias',
-                    'icon_color' => 'cyan',
+                    'text' => 'Categorias',                    
                     'route'  => 'admin.categorias.index',
-                    //'icon' => 'fas fa-list',
+                    'icon' => 'fab fa-fw fa-buffer',
+                    'icon_color' => 'cyan',
                     'can'  => 'admin.categorias.index',
                 ],
                 [
                     'text' => 'Marcas',
                     'route'  => 'admin.marcas.index',
                     'icon_color' => 'cyan',
+                    'icon' => 'fab fa-fw fa-buffer',
                     'can'  => 'admin.marcas.index',
                 ],
                 [
                     'text' => 'Modelos',
                     'route'  => 'admin.modelos.index',
                     'icon_color' => 'cyan',
+                    'icon' => 'far fa-file-alt',                    
                     'can'  => 'admin.modelos.index',
                 ],
                 [
                     'text' => 'Años Fab.',
                     'route'  => 'admin.años.index',
                     'icon_color' => 'cyan',
+                    'icon' => 'fas fa-list',
                     'can'  => 'admin.años.index',
                 ],
                 [
                     'text' => 'Estantes',
                     'route'  => 'admin.estantes.index',
                     'icon_color' => 'cyan',
+                    'icon' => 'fas fa-file',                    
                     'can'  => 'admin.estantes.index',
                 ],
                 [
                     'text' => 'Inventario',
                     'route'  => 'admin.repuestos.index',
                     'icon_color' => 'cyan',
+                    'icon' => 'fab fa-fw fa-buffer',
                     'can'  => 'admin.repuestos.index',
                 ],
 
@@ -392,7 +400,7 @@ return [
         ],
         [
             'text'    => 'Administrar Compras',
-            'icon'        => 'fas cart-shopping',   
+            'icon' => 'fa fa-cart-plus',   
             'label'       => 2,     
             'label_color' => 'success',     
             'submenu' => [
@@ -400,22 +408,22 @@ return [
                     'text' => 'Proveedor',
                     'icon_color' => 'cyan',
                     'route'  => 'admin.proveedores.index',
-                    //'icon' => 'fab fa-fw fa-buffer',
+                    'icon' => 'fas fa-shipping-fast',
                     'can'  => 'admin.proveedores.index',
                 ], 
                 
                 [
                     'text' => 'Nota de compra',
+                    'icon' => 'fab fa-fw fa-buffer',
                     'icon_color' => 'cyan',
-                    'route'  => 'admin.notadecompras.index',
-                    //'icon' => 'fab fa-fw fa-buffer',
+                    'route'  => 'admin.notadecompras.index',                    
                     'can'  => 'admin.notadecompras.index',
                 ],               
             ],         
         ],
         [
             'text'    => 'Administrar Ventas',
-            'icon'        => 'fas fa-warehouse',
+            'icon'        => 'fas fa-list',
             'label'       => 3,
             'label_color' => 'success',
             'submenu' => [
@@ -423,12 +431,13 @@ return [
                     'text' => 'Clientes',
                     'icon_color' => 'cyan',
                     'route'  => 'admin.clientes.index',
-                    //'icon' => 'fab fa-fw fa-buffer',
+                    'icon' => 'fas fa-user-tag',
                     //'can'  => 'admin.clientes.index',
                 ], 
                 
                 [
                     'text' => 'Nota de Venta',
+                    'icon' => 'fab fa-fw fa-buffer',
                     'icon_color' => 'cyan',
                     'route'  => 'admin.notadeventas.index',
                     //'icon' => 'fab fa-fw fa-buffer',
@@ -439,7 +448,7 @@ return [
                     'text' => 'Nota de Pago',
                     'icon_color' => 'cyan',
                     'route'  => 'admin.notadepagos.index',
-                    //'icon' => 'fab fa-fw fa-buffer',
+                    'icon' => 'fab fa-fw fa-buffer',
                     //'can'  => 'admin.notadepagos.index',
                 ],
                
@@ -447,7 +456,7 @@ return [
         ],
         [
             'text'    => 'Notas de salidas',
-            'icon'        => 'fas fa-warehouse',
+            'icon' => 'fa fa-cart-plus',
             // 'label'       => '';
             // 'label_color' => 'success',
             'submenu' => [
@@ -455,9 +464,9 @@ return [
                 
                 [
                     'text' => 'Nota de salida',
+                    'icon' => 'fab fa-fw fa-buffer',
                     'icon_color' => 'cyan',
-                    'route'  => 'admin.notasalidas.index',
-                    //'icon' => 'fab fa-fw fa-buffer',
+                    'route'  => 'admin.notasalidas.index',                    
                     'can'  => 'admin.notasalidas.index',
                 ],
                 
