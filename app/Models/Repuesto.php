@@ -59,7 +59,7 @@ class Repuesto extends Model
 
         //relacion muchos a muchos repuestos-notadeventas
         public function notasalidas(){
-            return $this->belongsToMany(NotaSalida::class,'detallesalidas')->withPivot('codigoRepuesto','cantidad','costounitario','subtotal');
+            return $this->belongsToMany(Notasalida::class,'detallesalidas')->withPivot('codigoRepuesto','cantidad','costounitario','subtotal');
         }
         
     

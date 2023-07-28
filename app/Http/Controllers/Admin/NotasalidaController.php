@@ -12,14 +12,13 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use PDF;
-
 class NotasalidaController extends Controller
 {
     //
     public function index(Request $request)
     {
         $id = $request->id;
-        $notasalida = Notasalida::all();
+        $notasalida=Notasalida::all();        
         $fechaActual = Carbon::now();
 
         return view('admin.notasalidas.index', compact('notasalida', 'fechaActual','id'));
