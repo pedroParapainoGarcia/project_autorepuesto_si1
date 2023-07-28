@@ -19,10 +19,10 @@ class NotasalidaController extends Controller
     public function index(Request $request)
     {
         $id = $request->id;
-        $notasalidas = Notasalida::all();
+        $notasalida = Notasalida::all();
         $fechaActual = Carbon::now();
 
-        return view('admin.notasalidas.index', compact('notasalidas', 'fechaActual','id'));
+        return view('admin.notasalidas.index', compact('notasalida', 'fechaActual','id'));
     }
 
 

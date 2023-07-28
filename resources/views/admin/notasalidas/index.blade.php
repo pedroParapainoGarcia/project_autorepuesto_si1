@@ -34,7 +34,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($notasalidas as $nota)
+                @foreach ($notasalida as $nota)
                 <tr>
                     <td>{{$nota->id}}</td>
                     <td>{{$nota->fecha}}</td>
